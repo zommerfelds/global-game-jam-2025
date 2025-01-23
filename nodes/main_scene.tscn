@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://ylngolvdfx2i"]
+
+[ext_resource type="Texture2D" uid="uid://u7xpqhihktbk" path="res://assets/icon.svg" id="1_d8aao"]
+[ext_resource type="Script" path="res://scripts/label.gd" id="2_fi3r2"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(99, 84)
+texture = ExtResource("1_d8aao")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 273.0
+offset_top = 64.0
+offset_right = 313.0
+offset_bottom = 87.0
+text = "Press play to see who is awesome"
+script = ExtResource("2_fi3r2")
