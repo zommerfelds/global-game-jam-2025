@@ -28,5 +28,5 @@ func _input(event):
 			emit_signal("bubble_fired", player_id)
 
 func rotate_cannon(rotation_angle_change: float) -> void:
-	angle = clamp(angle + rotation_angle_change, -90, 0)
+	angle = clamp(angle + rotation_angle_change, 0, 90)
 	rotation_degrees = angle
