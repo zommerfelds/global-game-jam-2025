@@ -30,9 +30,7 @@ func paint_circle(position: Vector2, radius: float, color: Color) -> void:
 	# Draw a circle, column by column
 	for x in range(-radius, radius + 1):
 		var sq = sqrt(radius**2 - x**2)
-		image.fill_rect(
-			Rect2i(position.x + x, position.y - sq, 1, sq * 2),
-			color
-		)
+		for y in range(-sq, sq):
+			image.set_pixel(position.x + x, position.y + y, color)
 	texture = ImageTexture.create_from_image(image)
 	
