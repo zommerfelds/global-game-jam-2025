@@ -15,9 +15,6 @@ func _ready() -> void:
 	)
 	texture = ImageTexture.create_from_image(image)
 	
-	# A test for painting a certain area.
-	paint_area(Vector2(200, 200), Color.HOT_PINK)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,15 +23,16 @@ func _process(delta: float) -> void:
 	
 func _input(event):
 	if event is InputEventMouseButton and event.pressed:
-		print("Mouse Click/Unclick at: ", event.position, event.button_index)
-		paint_area(event.position - position, Color.HOT_PINK)
-		# var image_position =
-		# paint_area
+		var color = Color.HOT_PINK if (event.button_index == 1) else Color.BLUE
+		paint_circle(event.position - position, 40, color)
 	
-func paint_area(position: Vector2, color: Color) -> void:
-	image.fill_rect(
-		Rect2i(position.x, position.y, splash_size, splash_size),
-		color
-	)
+func paint_circle(position: Vector2, radius: float, color: Color) -> void:
+	# Draw a circle, column by column
+	for x in range(-radius, radius + 1):
+		var sq = sqrt(radius**2 - x**2)
+		image.fill_rect(
+			Rect2i(position.x + x, position.y - sq, 1, sq * 2),
+			color
+		)
 	texture = ImageTexture.create_from_image(image)
 	
