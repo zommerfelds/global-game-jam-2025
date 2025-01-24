@@ -1,20 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Texture2D" uid="uid://u7xpqhihktbk" path="res://assets/icon.svg" id="1_d8aao"]
-[ext_resource type="Script" path="res://scripts/label.gd" id="2_fi3r2"]
+[ext_resource type="Script" path="res://scripts/cannon_input.gd" id="2_isgdx"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(154, 127)
+[node name="Cannon" type="Sprite2D" parent="."]
+position = Vector2(290, 183)
+scale = Vector2(0.21875, 1.28125)
 texture = ExtResource("1_d8aao")
-
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="Label" type="Label" parent="."]
-offset_left = 273.0
-offset_top = 64.0
-offset_right = 313.0
-offset_bottom = 87.0
-text = "Press play to see who is awesome"
-script = ExtResource("2_fi3r2")
+script = ExtResource("2_isgdx")
