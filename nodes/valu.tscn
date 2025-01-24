@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b87he6ayf6k8b"]
+[gd_scene load_steps=4 format=3 uid="uid://civxmaqajfrv4"]
 
+[ext_resource type="Texture2D" uid="uid://dsy5cxeq3gskl" path="res://assets/cannon-base.png" id="1_oukha"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="1_txqmi"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_fv4k2"]
+[ext_resource type="Texture2D" uid="uid://hra7gon3x7bp" path="res://assets/cannon.png" id="2_y30tk"]
 
 [node name="Valu" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 648)
-scale = Vector2(100, 20)
-texture = SubResource("CanvasTexture_fv4k2")
-offset = Vector2(0.5, 0)
+[node name="Cannon-base" type="Sprite2D" parent="."]
+position = Vector2(47, 547)
+scale = Vector2(2.71875, 2.71875)
+texture = ExtResource("1_oukha")
+
+[node name="Cannon2" type="Sprite2D" parent="Cannon-base"]
+texture = ExtResource("2_y30tk")
 script = ExtResource("1_txqmi")

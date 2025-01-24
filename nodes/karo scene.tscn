@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://elvqy6t17hb7"]
+[gd_scene load_steps=3 format=3 uid="uid://bo456fp308otk"]
 
 [ext_resource type="Script" path="res://scripts/paintable_area.gd" id="1_dlp24"]
 
@@ -8,4 +8,5 @@
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_nhusn")
+centered = false
 script = ExtResource("1_dlp24")
