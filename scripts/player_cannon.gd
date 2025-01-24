@@ -21,13 +21,11 @@ func _process(delta: float) -> void:
 		rotate_cannon(-delta * ROTATION_SPEED)
 	#elif Input.is_action_pressed("shoot_player_1"):
 	#	fire_bubble()
-
+ 
 func _input(event):
-	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_SPACE:
-			emit_signal("bubble_fired", 1)
-		elif event.keycode == KEY_A:
-			emit_signal("bubble_fired", 2)
+	if event is InputEventKey and event.is_released():
+		if (event.keycode == KEY_SPACE and player_id == 1) or (event.keycode == KEY_A and player_id == 2):
+			bubble_fired.emit(player_id)
 
 func rotate_cannon(rotation_angle_change: float) -> void:
 	angle = clamp(angle + rotation_angle_change, -90, 0)

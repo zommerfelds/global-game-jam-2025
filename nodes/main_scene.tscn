@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=6 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
 [ext_resource type="Texture2D" uid="uid://bai8jrdgknk8a" path="res://assets/cannon.png" id="3_iqdtu"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="4_hjojy"]
+[ext_resource type="AudioStream" uid="uid://bhiq6tl3lx6lq" path="res://assets/splat.mp3" id="5_5et1r"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -14,6 +15,7 @@ texture = ExtResource("2_hfgbl")
 centered = false
 
 [node name="Player1Cannon" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(0, 630)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_iqdtu")
@@ -22,8 +24,12 @@ script = ExtResource("4_hjojy")
 player_id = 1
 
 [node name="Player2Cannon" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(1000, 640)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
 player_id = 2
+
+[node name="Splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_5et1r")
