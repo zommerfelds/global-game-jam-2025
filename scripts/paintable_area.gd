@@ -13,11 +13,10 @@ func _ready() -> void:
 		Rect2i(border_size, border_size, area_width - 2*border_size, area_height - 2*border_size),
 	 	Color.LAVENDER
 	)
-	set_position(Vector2(400, 300))
 	texture = ImageTexture.create_from_image(image)
 	
 	# A test for painting a certain area.
-	_paint_area(Vector2(200, 200), Color.HOT_PINK)
+	paint_area(Vector2(200, 200), Color.HOT_PINK)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +24,14 @@ func _process(delta: float) -> void:
 	pass
 	
 	
-func _paint_area(position: Vector2, color: Color) -> void:
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		print("Mouse Click/Unclick at: ", event.position, event.button_index)
+		paint_area(event.position - position, Color.HOT_PINK)
+		# var image_position =
+		# paint_area
+	
+func paint_area(position: Vector2, color: Color) -> void:
 	image.fill_rect(
 		Rect2i(position.x, position.y, splash_size, splash_size),
 		color
