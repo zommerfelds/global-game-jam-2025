@@ -4,11 +4,10 @@ var border_size = 10
 var area_width = 600
 var area_height = 500
 var splash_size = 20
-var image = null
+var image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
 	image.fill(Color.DARK_SLATE_BLUE)
 	image.fill_rect(
 		Rect2i(border_size, border_size, area_width - 2*border_size, area_height - 2*border_size),
