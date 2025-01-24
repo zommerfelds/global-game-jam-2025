@@ -25,8 +25,10 @@ func _process(delta: float) -> void:
 func _input(event):
 	if event is InputEventKey and event.pressed:
 		if event.keycode == KEY_SPACE:
-			emit_signal("bubble_fired", player_id)
+			emit_signal("bubble_fired", 1)
+		elif event.keycode == KEY_A:
+			emit_signal("bubble_fired", 2)
 
 func rotate_cannon(rotation_angle_change: float) -> void:
 	angle = clamp(angle + rotation_angle_change, -90, 0)
-	rotation_degrees = angle
+	rotation_degrees = angle if player_id == 1 else -angle

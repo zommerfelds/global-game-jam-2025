@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=5 format=3 uid="uid://ylngolvdfx2i"]
 
-[ext_resource type="Texture2D" uid="uid://u7xpqhihktbk" path="res://assets/icon.svg" id="1_d8aao"]
-[ext_resource type="Script" path="res://scripts/cannon_input.gd" id="2_isgdx"]
+[ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
+[ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
+[ext_resource type="Texture2D" uid="uid://bai8jrdgknk8a" path="res://assets/cannon.png" id="3_iqdtu"]
+[ext_resource type="Script" path="res://scripts/player_cannon.gd" id="4_hjojy"]
 
-[node name="Node2D" type="Node2D"]
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_cggda")
 
-[node name="Cannon" type="Sprite2D" parent="."]
-position = Vector2(290, 183)
-scale = Vector2(0.21875, 1.28125)
-texture = ExtResource("1_d8aao")
-script = ExtResource("2_isgdx")
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 3
+texture = ExtResource("2_hfgbl")
+centered = false
+
+[node name="Player1Cannon" type="Sprite2D" parent="."]
+position = Vector2(0, 630)
+scale = Vector2(-1, 1)
+texture = ExtResource("3_iqdtu")
+offset = Vector2(0, 45)
+script = ExtResource("4_hjojy")
+player_id = 1
+
+[node name="Player2Cannon" type="Sprite2D" parent="."]
+position = Vector2(1000, 640)
+texture = ExtResource("3_iqdtu")
+offset = Vector2(0, 45)
+script = ExtResource("4_hjojy")
+player_id = 2
