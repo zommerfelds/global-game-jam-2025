@@ -1,8 +1,8 @@
 extends Sprite2D
 
 var border_size = 10
-var area_width = 600
-var area_height = 500
+var area_width = 800
+var area_height = 600
 var splash_size = 20
 var image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
 

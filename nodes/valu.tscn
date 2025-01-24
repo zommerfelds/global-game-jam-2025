@@ -7,7 +7,7 @@
 [node name="Valu" type="Node2D"]
 
 [node name="Cannon-base" type="Sprite2D" parent="."]
-position = Vector2(52.5, 594.5)
+position = Vector2(47, 547)
 scale = Vector2(2.71875, 2.71875)
 texture = ExtResource("1_oukha")
 

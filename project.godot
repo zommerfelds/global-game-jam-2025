@@ -15,6 +15,11 @@ run/main_scene="res://nodes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=600
+
 [input]
 
 rotate_cw_player_1={
