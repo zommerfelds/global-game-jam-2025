@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b87he6ayf6k8b"]
+
+[ext_resource type="Script" path="res://scripts/player_cannon.gd" id="1_txqmi"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_fv4k2"]
+
+[node name="Valu" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 648)
+scale = Vector2(100, 20)
+texture = SubResource("CanvasTexture_fv4k2")
+offset = Vector2(0.5, 0)
+script = ExtResource("1_txqmi")
