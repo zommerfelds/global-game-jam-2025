@@ -15,9 +15,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("rotate_cw_player_1"):
+	if Input.is_action_pressed("rotate_cw_player_" + str(player_id)):
 		rotate_cannon(delta * ROTATION_SPEED)
-	elif Input.is_action_pressed("rotate_ccw_player_1"):
+	elif Input.is_action_pressed("rotate_ccw_player_" + str(player_id)):
 		rotate_cannon(-delta * ROTATION_SPEED)
 	#elif Input.is_action_pressed("shoot_player_1"):
 	#	fire_bubble()
