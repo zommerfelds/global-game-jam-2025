@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfuuldofd8g5b"]
+[gd_scene load_steps=2 format=3 uid="uid://c5obxa3b78vcu"]
 
 [ext_resource type="Script" path="res://scripts/game_end.gd" id="1_s2dfi"]
 
@@ -11,46 +11,71 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s2dfi")
 
+[node name="Canvas" type="Sprite2D" parent="."]
+position = Vector2(400, 210)
+
 [node name="GameEndLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -39.5
-offset_top = -127.5
+offset_top = 20.0
 offset_right = 39.5
-offset_bottom = -104.5
+offset_bottom = 43.0
 grow_horizontal = 2
-grow_vertical = 2
 text = "Game End"
+horizontal_alignment = 1
 
-[node name="ScoreDisplayLabel" type="Label" parent="."]
+[node name="ScoreDisplayLabel1" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -60.0
+offset_top = 50.0
+offset_right = -20.0
+offset_bottom = 73.0
 grow_horizontal = 2
-grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="ScoreDisplayLabelSeperator" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 50.0
+offset_right = 20.0
+offset_bottom = 73.0
+grow_horizontal = 2
+text = ":"
+horizontal_alignment = 1
+
+[node name="ScoreDisplayLabel2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 60.0
+offset_bottom = 73.0
+grow_horizontal = 2
+horizontal_alignment = 1
 
 [node name="WinnerLabel" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 offset_left = -30.0
-offset_top = 45.0
+offset_top = -90.0
 offset_right = 30.0
-offset_bottom = 105.0
+offset_bottom = -30.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1

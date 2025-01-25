@@ -108,5 +108,6 @@ func _process(delta: float) -> void:
 		if(timeLeft<0):
 			Global.score_p1=player[0].score * 1.0 / canvas.area
 			Global.score_p2=player[1].score * 1.0 / canvas.area
+			Global.canvas_texture = canvas.texture
 			print("Game over! Switching scenes...")
 			get_tree().change_scene_to_file("res://nodes/GameEnd.tscn")
