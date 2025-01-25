@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2wo7uk4b21ju"]
+[gd_scene load_steps=5 format=3 uid="uid://b2wo7uk4b21ju"]
 
 [ext_resource type="Script" path="res://scripts/star.gd" id="1_qx85u"]
 [ext_resource type="Texture2D" uid="uid://dyk50sgldq00t" path="res://assets/star.png" id="2_n08xr"]
+[ext_resource type="AudioStream" uid="uid://b3xxtj81ptq5l" path="res://assets/chaching.mp3" id="3_g7a1m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8qbpv"]
 size = Vector2(49, 49)
@@ -16,3 +17,7 @@ texture = ExtResource("2_n08xr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.38834, 0.404459)
 shape = SubResource("RectangleShape2D_8qbpv")
+
+[node name="Chaching" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_g7a1m")
+volume_db = 10.0

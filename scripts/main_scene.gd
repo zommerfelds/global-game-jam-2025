@@ -15,6 +15,8 @@ var player_id = 1
 var player_1_score = 0
 var player_2_score = 0
 var soundtrack_id = 0
+var current_level: Node2D
+
 const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 
 # Called when the node enters the scene tree for the first time.
@@ -32,10 +34,8 @@ func _ready() -> void:
 	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
-	$Bonuses/Star.star_collected.connect(_on_star_collected)
-
-func _on_star_collected(player_id: int):
-	$Chaching.play()
+	current_level = load("res://nodes/level_1.tscn").instantiate()
+	add_child(current_level)
 
 func _on_bubble_fired(player_id: int, duration: float):
 	var bubble = bubble_scene.instantiate()
