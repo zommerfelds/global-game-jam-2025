@@ -1027,4 +1027,3 @@ script = ExtResource("14_nlb2v")
 [node name="MicPlayer" type="AudioStreamPlayer" parent="AudioInput"]
 stream = SubResource("AudioStreamMicrophone_46w4w")
 autoplay = true
-bus = &"Microphone"
