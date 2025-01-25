@@ -38,11 +38,11 @@ func _on_bubble_fired(player_id: int, duration: float):
 	else:
 		direction = Vector2(-1, 0).rotated(-player_2_cannon.angle * PI / 180)
 		bubble.position = player_2_cannon.global_position + direction * 50
-	bubble.velocity = direction * 300 # Adjust speed as needed
+	bubble.linear_velocity = direction * 500 * (0.7 + duration)
 	bubble.bubble_burst.connect(_on_bubble_burst)
 	bubble.player_id = player_id
 	bubble.color = player_colors[player_id-1]
-	bubble.duration = duration
+	bubble.duration = (duration ** 0.3) * 0.7
 	add_child(bubble)
 	$Blub.play()
 
