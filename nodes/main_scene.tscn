@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=8 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
 [ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="3_iqdtu"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="4_hjojy"]
 [ext_resource type="AudioStream" uid="uid://bhiq6tl3lx6lq" path="res://assets/splat.mp3" id="5_5et1r"]
+[ext_resource type="Script" path="res://scripts/paintable_area.gd" id="6_8g4gx"]
+[ext_resource type="AudioStream" uid="uid://dqc308503jcgk" path="res://assets/blub.mp3" id="7_spr3s"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -17,8 +19,8 @@ centered = false
 
 [node name="Player1Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(20, 521)
-scale = Vector2(-1, 1)
+position = Vector2(100, 506)
+scale = Vector2(-0.375, 0.375)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
@@ -26,7 +28,8 @@ player_id = 1
 
 [node name="Player2Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(769, 520)
+position = Vector2(700, 506)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
@@ -34,3 +37,35 @@ player_id = 2
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5et1r")
+max_polyphony = 5
+
+[node name="Canvas" type="Sprite2D" parent="."]
+position = Vector2(400, 300)
+script = ExtResource("6_8g4gx")
+
+[node name="Player1Score" type="Label" parent="."]
+offset_left = 9.0
+offset_right = 142.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 1
+0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Player2Score" type="Label" parent="."]
+offset_left = 650.0
+offset_right = 799.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 2
+0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Blub" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_spr3s")
+volume_db = 10.0
+max_polyphony = 5

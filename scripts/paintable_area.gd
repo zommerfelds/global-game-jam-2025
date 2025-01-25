@@ -1,8 +1,8 @@
 extends Sprite2D
 
 var border_size = 10
-var area_width = 800
-var area_height = 600
+var area_width = 500
+var area_height = 300
 var splash_size = 20
 var background_color = Color.LAVENDER
 var player_colors = [Color.HOT_PINK, Color.BLUE]
@@ -16,20 +16,21 @@ func _ready() -> void:
 	 	Color.LAVENDER
 	)
 	texture = ImageTexture.create_from_image(image)
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-	
-	
-func _input(event):
-	if event is InputEventMouseButton and event.pressed:
-		var color = player_colors[0] if (event.button_index == 1) else player_colors[1]
-		paint_circle(event.position - position, 40, color)
-	
-func paint_circle(position: Vector2, radius: float, color: Color) -> void:
+
+
+func splash(position: Vector2, color: Color, radius: float) -> int:
+	var paint_position = position - self.position + Vector2(area_width/2, area_height/2)
+	return paint_circle(paint_position, radius, color)
+	# TODO: Show sprite on top and fade it out.
+
+
+func paint_circle(position: Vector2, radius: float, color: Color) -> int:
 	# Draw a circle, column by column
+	var num_pixels_painted = 0
 	for x in range(-radius, radius + 1):
 		var sq = sqrt(radius**2 - x**2)
 		for y in range(-sq, sq + 1):
@@ -37,5 +38,7 @@ func paint_circle(position: Vector2, radius: float, color: Color) -> void:
 				# Don't paint if the pixel already has a non-background color.
 				continue
 			image.set_pixel(position.x + x, position.y + y, color)
+			num_pixels_painted += 1
 	texture = ImageTexture.create_from_image(image)
+	return num_pixels_painted
 	

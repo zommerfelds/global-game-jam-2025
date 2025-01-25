@@ -15,17 +15,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("rotate_cw_player_1"):
-		rotate_cannon(delta * ROTATION_SPEED)
-	elif Input.is_action_pressed("rotate_ccw_player_1"):
-		rotate_cannon(-delta * ROTATION_SPEED)
-	#elif Input.is_action_pressed("shoot_player_1"):
-	#	fire_bubble()
- 
-func _input(event):
-	if event is InputEventKey and event.is_released():
-		if (event.keycode == KEY_SPACE and player_id == 1) or (event.keycode == KEY_A and player_id == 2):
-			bubble_fired.emit(player_id)
+	var mirror = 1 if player_id == 1 else -1
+	if Input.is_action_pressed("rotate_cw_player_" + str(player_id)):
+		rotate_cannon(delta * ROTATION_SPEED * mirror)
+	elif Input.is_action_pressed("rotate_ccw_player_" + str(player_id)):
+		rotate_cannon(-delta * ROTATION_SPEED * mirror)
+
+	if Input.is_action_just_pressed("shoot_player_" + str(player_id)):
+		bubble_fired.emit(player_id)
 
 func rotate_cannon(rotation_angle_change: float) -> void:
 	angle = clamp(angle + rotation_angle_change, -90, 0)
