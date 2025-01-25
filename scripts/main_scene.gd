@@ -9,11 +9,8 @@ extends Node2D
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
-const player_colors = [Color.HOT_PINK, Color.BLUE]
-
+var player = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
 var player_id = 1
-var player_1_score = 0
-var player_2_score = 0
 var soundtrack_id = 0
 var current_level: Node2D
 
@@ -22,9 +19,9 @@ const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://as
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
-	p1_image.fill(player_colors[0])
+	p1_image.fill(player[0].color)
 	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
-	p2_image.fill(player_colors[1])
+	p2_image.fill(player[1].color)
 	score_p1.texture = ImageTexture.create_from_image(p1_image)
 	score_p2.texture = ImageTexture.create_from_image(p2_image)
 	score_p1.scale.x = 0
@@ -38,6 +35,9 @@ func _ready() -> void:
 	add_child(current_level)
 
 func _on_bubble_fired(player_id: int, duration: float):
+	fire_bubble(player_id, duration)
+
+func fire_bubble(player_id: int, power: float):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -47,11 +47,11 @@ func _on_bubble_fired(player_id: int, duration: float):
 	else:
 		direction = Vector2(-1, 0).rotated(-player_2_cannon.angle * PI / 180)
 		bubble.position = player_2_cannon.global_position + direction * 50
-	bubble.linear_velocity = direction * 500 * (0.7 + duration)
+	bubble.linear_velocity = direction * 500 * (0.7 + power)
 	bubble.bubble_burst.connect(_on_bubble_burst)
 	bubble.player_id = player_id
-	bubble.color = player_colors[player_id-1]
-	bubble.duration = (duration ** 0.3) * 0.7
+	bubble.color = player[player_id-1].color
+	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
 	add_child(bubble)
 	$Blub.play()
@@ -60,23 +60,19 @@ func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
 	$Splat.play()
 	if randi() % 100 == 0:
 		$Hallelujah.play();
-	var color = player_colors[player_id-1]
+	var color = player[player_id-1].color
 	var score = canvas.splash(position, color, radius)
-	if player_id == 1:
-		player_1_score += score
-	else:
-		player_2_score += score
+	player[player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
 	splash.color = color
 	splash.position = position;
 	add_child(splash)
-	
 	_update_score_labels()
 
 func _update_score_labels():
-	var p1_percentage = player_1_score * 1.0 / canvas.area
-	var p2_percentage = player_2_score * 1.0 / canvas.area
+	var p1_percentage = player[0].score * 1.0 / canvas.area
+	var p2_percentage = player[1].score * 1.0 / canvas.area
 	score_p1.scale.x = p1_percentage
 	score_p2.scale.x = p2_percentage
 
