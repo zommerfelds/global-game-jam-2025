@@ -3,12 +3,10 @@ extends Area2D
 signal bubble_burst()
 
 var velocity = Vector2.ZERO
-var color: Color
+var player_id: int
 var splash_radius: float = 50
-var burst = false
 
 func _physics_process(delta):
-	if burst: return
 	position += velocity * delta
 	
 	if position.y < 0 or position.y > get_viewport().size.y or position.x < 0 or position.y > get_viewport().size.y:
@@ -19,5 +17,5 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 		z_index = 0
 		#$Sprite.texture = preload("res://assets/splash.png")
-		bubble_burst.emit(position, color, splash_radius)
-		burst = true
+		bubble_burst.emit(position, player_id, splash_radius)
+		queue_free()

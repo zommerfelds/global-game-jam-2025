@@ -22,14 +22,15 @@ func _process(delta: float) -> void:
 	pass
 
 
-func splash(position: Vector2, color: Color, radius: float):
+func splash(position: Vector2, color: Color, radius: float) -> int:
 	var paint_position = position - self.position + Vector2(area_width/2, area_height/2)
-	paint_circle(paint_position, radius, color)
+	return paint_circle(paint_position, radius, color)
 	# TODO: Show sprite on top and fade it out.
 
 
-func paint_circle(position: Vector2, radius: float, color: Color) -> void:
+func paint_circle(position: Vector2, radius: float, color: Color) -> int:
 	# Draw a circle, column by column
+	var num_pixels_painted = 0
 	for x in range(-radius, radius + 1):
 		var sq = sqrt(radius**2 - x**2)
 		for y in range(-sq, sq + 1):
@@ -37,5 +38,7 @@ func paint_circle(position: Vector2, radius: float, color: Color) -> void:
 				# Don't paint if the pixel already has a non-background color.
 				continue
 			image.set_pixel(position.x + x, position.y + y, color)
+			num_pixels_painted += 1
 	texture = ImageTexture.create_from_image(image)
+	return num_pixels_painted
 	

@@ -39,3 +39,25 @@ stream = ExtResource("5_5et1r")
 [node name="Canvas" type="Sprite2D" parent="."]
 position = Vector2(400, 300)
 script = ExtResource("6_8g4gx")
+
+[node name="Player1Score" type="Label" parent="."]
+offset_left = 9.0
+offset_right = 142.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 1
+0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Player2Score" type="Label" parent="."]
+offset_left = 650.0
+offset_right = 799.0
+offset_bottom = 42.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 2
+0"
+horizontal_alignment = 1
+uppercase = true
