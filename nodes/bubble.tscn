@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bqnj4vnoorgbe"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_4k1xa"]
-[ext_resource type="Texture2D" uid="uid://blssxh0yguxrk" path="res://assets/bubble.png" id="2_qnjsw"]
+[ext_resource type="Texture2D" uid="uid://bv37b07wwdok" path="res://assets/bubble-tintable.png" id="2_rmp5a"]
 
 [node name="Bubble" type="Area2D"]
 script = ExtResource("1_4k1xa")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 1
-texture = ExtResource("2_qnjsw")
+texture = ExtResource("2_rmp5a")

@@ -7,6 +7,10 @@ var color: Color
 var splash_radius: float = 50
 var burst = false
 
+
+func _ready() -> void:
+	$Sprite.set_modulate(color)
+
 func _physics_process(delta):
 	if burst: return
 	position += velocity * delta
