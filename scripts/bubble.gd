@@ -20,6 +20,10 @@ func _physics_process(delta):
 		extra_force -= delta
 	if extra_force < 0:
 		extra_force = 0
+	if Input.is_action_pressed('boost_player_' + str(player_id)):
+		#apply_central_force(Vector2(0, -2000))
+		duration += delta #* 0.5
+
 	if position.y < 0 or position.y > get_viewport().size.y or position.x < 0 or position.y > get_viewport().size.y:
 		#position = Vector2.ZERO
 		queue_free()
