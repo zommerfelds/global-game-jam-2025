@@ -17,6 +17,12 @@ var player_2_score = 0
 func _ready() -> void:
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
+	player_1_cannon.position.x = 10 + 50
+	player_1_cannon.position.y = get_viewport().size.y - 10 - 50
+	player_2_cannon.position.x = get_viewport().size.x - 10 - 50
+	player_2_cannon.position.y = get_viewport().size.y - 10 - 50
+	player_1_cannon.scale *= 100.0/332
+	player_2_cannon.scale *= 100.0/332
 
 func _on_bubble_fired(player_id):
 	var bubble = bubble_scene.instantiate()
