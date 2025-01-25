@@ -32,6 +32,10 @@ func _ready() -> void:
 	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
+	$Bonuses/Star.star_collected.connect(_on_star_collected)
+
+func _on_star_collected(player_id: int):
+	$Chaching.play()
 
 func _on_bubble_fired(player_id: int, duration: float):
 	var bubble = bubble_scene.instantiate()
