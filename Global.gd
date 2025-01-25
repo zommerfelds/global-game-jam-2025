@@ -5,3 +5,11 @@ var score_p1 =0
 var score_p2= 0
 var canvas_texture: Texture2D
 var level_scene = "res://nodes/levels/level_1.tscn"
+
+func _ready() -> void:
+	print("Welcome to a bubble game!")
+
+func _input(event):
+	if event is InputEventKey:
+		if event.keycode == KEY_ESCAPE:
+			get_tree().quit()
