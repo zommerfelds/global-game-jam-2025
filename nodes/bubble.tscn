@@ -8,6 +8,7 @@
 resource_local_to_scene = true
 shader = ExtResource("2_gjfhv")
 shader_parameter/seed = 0.0
+shader_parameter/color_tint = null
 
 [node name="Bubble" type="Area2D"]
 script = ExtResource("1_4k1xa")

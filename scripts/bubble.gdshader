@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform float seed;
+uniform vec3 color_tint;
 const float DISTORTION_AMOUNT = 0.1;
 
 // 2D Random
@@ -39,5 +40,7 @@ void fragment() {
   float dy = noise(vec2(UV.y*3.0 + seed, UV.x*3.0 + (TIME + seed)*3.0));
 
   COLOR = texture(TEXTURE, UV.xy + vec2(dx, dy)*DISTORTION_AMOUNT - DISTORTION_AMOUNT/2.0);
+
+  COLOR.rgb = mix(COLOR.rgb, color_tint, 0.5);
 }
 
