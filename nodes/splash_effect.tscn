@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://17iw7t1428v3"]
+
+[ext_resource type="Script" path="res://scripts/splash_effect.gd" id="1_egmhc"]
+[ext_resource type="Texture2D" uid="uid://bppnq4r33kjm2" path="res://assets/splashes/splash_particle_01_x16.png" id="1_x5jtj"]
+
+[sub_resource type="Curve" id="Curve_g56tb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.714065, 0.497135), -2.51958, -2.51958, 0, 0, Vector2(0.888717, 0.00442827), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6xf62"]
+curve = SubResource("Curve_g56tb")
+
+[sub_resource type="Curve" id="Curve_qg184"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.836167, 0.160198), -3.92062, -3.92062, 0, 0, Vector2(0.863988, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4y21"]
+curve = SubResource("Curve_qg184")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y6vex"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+angular_velocity_min = 261.4
+angular_velocity_max = 288.92
+gravity = Vector3(0, 500, 0)
+scale_min = 0.7
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_f4y21")
+alpha_curve = SubResource("CurveTexture_6xf62")
+
+[node name="SplashEffect" type="Node2D"]
+script = ExtResource("1_egmhc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_y6vex")
+texture = ExtResource("1_x5jtj")
+one_shot = true
+explosiveness = 1.0

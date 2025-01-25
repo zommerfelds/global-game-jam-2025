@@ -7,6 +7,7 @@ extends Node2D
 @onready var score_p2 = $ScoreBar/P2Score
 
 var bubble_scene = load("res://nodes/bubble.tscn")
+var splash_effect = load("res://nodes/splash_effect.tscn")
 
 const player_colors = [Color.HOT_PINK, Color.BLUE]
 
@@ -54,11 +55,18 @@ func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
 	$Splat.play()
 	if randi() % 100 == 0:
 		$Hallelujah.play();
-	var score = canvas.splash(position, player_colors[player_id-1], radius)
+	var color = player_colors[player_id-1]
+	var score = canvas.splash(position, color, radius)
 	if player_id == 1:
 		player_1_score += score
 	else:
 		player_2_score += score
+		
+	var splash = splash_effect.instantiate()
+	splash.color = color
+	splash.position = position;
+	add_child(splash)
+	
 	_update_score_labels()
 
 func _update_score_labels():
