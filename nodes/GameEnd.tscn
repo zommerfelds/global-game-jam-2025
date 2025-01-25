@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5obxa3b78vcu"]
+[gd_scene load_steps=5 format=3 uid="uid://c5obxa3b78vcu"]
 
 [ext_resource type="Script" path="res://scripts/game_end.gd" id="1_s2dfi"]
 [ext_resource type="FontFile" uid="uid://dh1arip7xenw2" path="res://assets/PixelifySans-VariableFont_wght.ttf" id="2_k5qtp"]
@@ -33,9 +33,9 @@ offset_right = 39.5
 offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_k5qtp")
 theme_override_font_sizes/font_size = 40
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Game End"
 horizontal_alignment = 1
 
@@ -50,8 +50,8 @@ offset_right = -20.0
 offset_bottom = 73.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_k5qtp")
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_k5qtp")
 horizontal_alignment = 1
 
 [node name="ScoreDisplayLabelSeperator" type="Label" parent="."]
@@ -93,10 +93,9 @@ offset_top = -95.0
 offset_right = 30.0
 offset_bottom = -35.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_k5qtp")
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_k5qtp")
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
 
