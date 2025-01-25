@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=14 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/paintable_area.gd" id="6_8g4gx"]
 [ext_resource type="AudioStream" uid="uid://dqc308503jcgk" path="res://assets/blub.mp3" id="7_spr3s"]
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
+[ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
+[ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
 
@@ -36,6 +38,10 @@ offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
 player_id = 1
 
+[node name="Wubwub" type="AudioStreamPlayer" parent="Player1Cannon"]
+stream = ExtResource("9_tp06u")
+parameters/looping = true
+
 [node name="Player2Cannon" type="Sprite2D" parent="."]
 z_index = 2
 position = Vector2(700, 506)
@@ -44,6 +50,10 @@ texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
 player_id = 2
+
+[node name="Wubwub" type="AudioStreamPlayer" parent="Player2Cannon"]
+stream = ExtResource("9_tp06u")
+parameters/looping = true
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5et1r")
@@ -82,3 +92,8 @@ offset = Vector2(-1, -0.5)
 position = Vector2(0.5, 0)
 scale = Vector2(0.002, 1)
 texture = SubResource("GradientTexture1D_u7k1u")
+
+[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_exomn")
+volume_db = -1.0
+parameters/looping = true

@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqe2wp7bbaie2"]
+[gd_scene load_steps=2 format=3 uid="uid://b3vksa5s27ndd"]
 
-[ext_resource type="Script" path="res://scripts/side_menu_background.gd" id="1_ib3a6"]
 [ext_resource type="Script" path="res://scripts/side_menu.gd" id="1_qt2yi"]
 
 [node name="SideMenu" type="Node2D"]
@@ -8,7 +7,6 @@ script = ExtResource("1_qt2yi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 centered = false
-script = ExtResource("1_ib3a6")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 offset_left = 7.0
