@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=19 format=4 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
 [ext_resource type="Texture2D" uid="uid://brx86mi3cxe2t" path="res://assets/Line-And-Shape-16x16-Expanded-Gothic.png" id="10_8wdku"]
 [ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
+[ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 
 [sub_resource type="Gradient" id="Gradient_hav4s"]
 colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
@@ -1009,3 +1010,6 @@ texture = SubResource("GradientTexture1D_u7k1u")
 stream = ExtResource("10_exomn")
 volume_db = -1.0
 parameters/looping = true
+
+[node name="Stand" type="Sprite2D" parent="."]
+texture = ExtResource("13_am0ri")

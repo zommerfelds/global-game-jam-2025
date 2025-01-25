@@ -29,6 +29,8 @@ func _ready() -> void:
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
 	$Soundtrack.play()
+	$Stand.position.x = get_viewport().size.x / 2
+	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
 
 func _on_bubble_fired(player_id: int, duration: float):
 	var bubble = bubble_scene.instantiate()
