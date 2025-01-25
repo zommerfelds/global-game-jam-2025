@@ -29,6 +29,10 @@ window/size/viewport_width=800
 window/size/viewport_height=450
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom_font="res://assets/PixelifySans-VariableFont_wght.ttf"
+
 [input]
 
 rotate_cw_player_1={

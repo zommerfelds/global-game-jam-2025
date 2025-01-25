@@ -14,7 +14,6 @@ offset = Vector2(198.455, 97.0911)
 
 [node name="Cannon2" type="Sprite2D" parent="Cannon"]
 position = Vector2(-864.455, 100.909)
-scale = Vector2(1, 1)
 texture = ExtResource("1_p6lsv")
 flip_h = true
 
