@@ -13,11 +13,15 @@ var preloaded_splash_values = Dictionary()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	image.fill(Color.DARK_SLATE_BLUE)
-	image.fill_rect(
-		Rect2i(border_size, border_size, area_width - 2*border_size, area_height - 2*border_size),
-	 	Color.LAVENDER
-	)
+	image = texture.get_image()
+	background_color = image.get_pixel(100, 100)
+	area_width = texture.get_size().x
+	area_height = texture.get_size().y
+	#image.fill(Color.DARK_SLATE_BLUE)
+	#image.fill_rect(
+	#	Rect2i(border_size, border_size, area_width - 2*border_size, area_height - 2*border_size),
+	# 	Color.LAVENDER
+	#)
 	texture = ImageTexture.create_from_image(image)
 	
 	var image = Image.new()
