@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bqnj4vnoorgbe"]
+[gd_scene load_steps=6 format=3 uid="uid://bqnj4vnoorgbe"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_4k1xa"]
 [ext_resource type="Shader" path="res://scripts/bubble.gdshader" id="2_gjfhv"]
 [ext_resource type="Texture2D" uid="uid://bv37b07wwdok" path="res://assets/bubble-tintable.png" id="2_rmp5a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y1mo0"]
+radius = 13.0384
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_micq7"]
 resource_local_to_scene = true
@@ -10,8 +13,11 @@ shader = ExtResource("2_gjfhv")
 shader_parameter/seed = 0.0
 shader_parameter/color_tint = null
 
-[node name="Bubble" type="Area2D"]
+[node name="RigidBody2D" type="RigidBody2D"]
 script = ExtResource("1_4k1xa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y1mo0")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 z_index = 1
