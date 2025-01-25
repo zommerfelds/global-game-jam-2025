@@ -51,7 +51,9 @@ func paint_splash(position: Vector2, color: Color) -> int:
 		for y in range(splash_height):
 			var relative_position = Vector2i(x, y) + Vector2i(position) + offset
 			# Don't paint if the pixel already has a non-background color.
-			if image.get_pixel(relative_position.x, relative_position.y) != background_color:
+			if (relative_position.x < 0 or relative_position.y < 0 or 
+					relative_position.x >= image.get_width() or relative_position.y >= image.get_height() or
+					image.get_pixel(relative_position.x, relative_position.y) != background_color):
 				continue
 			var offset_vector = Vector2(x, y) - splash_image.get_size()/2.0
 			var new_source_coords = offset_vector.rotated(splash_rotation) + splash_image.get_size()/2.0
