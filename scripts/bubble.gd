@@ -9,9 +9,9 @@ var color: Color
 var duration: float
 
 
-func _ready():
-	$Sprite.set_modulate(color)
+func _enter_tree() -> void:
 	$Sprite.material.set_shader_parameter("seed", randf()*10)
+	$Sprite.material.set_shader_parameter("color_tint", color)
 
 func _physics_process(delta):
 	position += velocity * delta
