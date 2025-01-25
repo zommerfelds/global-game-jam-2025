@@ -35,6 +35,7 @@ func _on_bubble_fired(player_id: int, duration: float):
 	bubble.color = player_colors[player_id-1]
 	bubble.duration = duration
 	add_child(bubble)
+	$Blub.play()
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):
 	$Splat.play()
