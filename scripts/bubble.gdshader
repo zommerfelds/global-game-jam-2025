@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 uniform float seed;
 uniform vec3 color_tint;
-const float DISTORTION_AMOUNT = 0.1;
+const float DISTORTION_AMOUNT = 0.2;
 
 // 2D Random
 float random (in vec2 st) {
