@@ -11,7 +11,7 @@ var color: Color
 func _ready():
 	$Sprite.set_modulate(color)
 	$Sprite.material.set_shader_parameter("seed", randf()*10)
-	
+
 func _physics_process(delta):
 	position += velocity * delta
 	
