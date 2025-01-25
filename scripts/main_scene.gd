@@ -14,7 +14,7 @@ var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
 var timerStart=false
-var defaultTimePerRound=60 # unit is second
+var defaultTimePerRound=30 # unit is second
 var timeLeft=defaultTimePerRound
 const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 

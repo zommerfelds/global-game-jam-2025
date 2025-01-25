@@ -4,8 +4,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(Global.score_p1)
-	print(Global.score_p2)
 	var formatedScoreP1=Global.score_p1*100
 	var formatedScoreP2=Global.score_p2*100
 	score_display_label.text=str("%.2f" % formatedScoreP1, "% : ", "%.2f" % formatedScoreP2, "%")

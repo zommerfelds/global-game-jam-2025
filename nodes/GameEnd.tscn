@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dfuuldofd8g5b"]
+[gd_scene load_steps=2 format=3 uid="uid://dfuuldofd8g5b"]
+
+[ext_resource type="Script" path="res://scripts/game_end.gd" id="1_s2dfi"]
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s2dfi")
 
 [node name="GameEndLabel" type="Label" parent="."]
 layout_mode = 1
