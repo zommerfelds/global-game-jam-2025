@@ -9,7 +9,7 @@ extends Node2D
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
-var player = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
+var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
@@ -32,20 +32,27 @@ func _ready() -> void:
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
 	current_level = load("res://nodes/level_1.tscn").instantiate()
+	current_level.players = player
 	add_child(current_level)
 
 func _on_bubble_fired(player_id: int, duration: float):
-	fire_bubble(player_id, duration)
+	if player[player_id-1].bonus_shots_remaining > 0:
+		player[player_id-1].bonus_shots_remaining -= 1
+		fire_bubble(player_id, duration, 10)
+		fire_bubble(player_id, duration, 0)
+		fire_bubble(player_id, duration, -10)
+	else:
+		fire_bubble(player_id, duration)
 
-func fire_bubble(player_id: int, power: float):
+func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
 	if player_id == 1:
-		direction = Vector2(1, 0).rotated(player_1_cannon.angle * PI / 180)
+		direction = Vector2(1, 0).rotated((player_1_cannon.angle + delta_angle_deg) * PI / 180)
 		bubble.position = player_1_cannon.global_position + direction * 50
 	else:
-		direction = Vector2(-1, 0).rotated(-player_2_cannon.angle * PI / 180)
+		direction = Vector2(-1, 0).rotated(-(player_2_cannon.angle + delta_angle_deg) * PI / 180)
 		bubble.position = player_2_cannon.global_position + direction * 50
 	bubble.linear_velocity = direction * 500 * (0.7 + power)
 	bubble.bubble_burst.connect(_on_bubble_burst)
