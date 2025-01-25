@@ -4,7 +4,7 @@ signal bubble_fired(player_id, duration)
 
 @export var player_id = 0
 
-const ROTATION_SPEED = 50.0
+const ROTATION_SPEED = 70.0
 const SHAKE_MAGNITUDE = 10
 const SHAKE_FREQUENCY = 100  # .. divided by 2pi
 
