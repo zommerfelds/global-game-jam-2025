@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
-[ext_resource type="Texture2D" path="res://assets/cannon.png" id="3_iqdtu"]
+[ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="3_iqdtu"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="4_hjojy"]
 [ext_resource type="AudioStream" uid="uid://bhiq6tl3lx6lq" path="res://assets/splat.mp3" id="5_5et1r"]
 
@@ -11,12 +11,13 @@ script = ExtResource("1_cggda")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 3
+scale = Vector2(1.56055, 1.98013)
 texture = ExtResource("2_hfgbl")
 centered = false
 
 [node name="Player1Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(0, 630)
+position = Vector2(20, 521)
 scale = Vector2(-1, 1)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
@@ -25,7 +26,7 @@ player_id = 1
 
 [node name="Player2Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(1000, 640)
+position = Vector2(769, 520)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
