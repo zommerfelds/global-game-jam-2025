@@ -15,6 +15,10 @@ run/main_scene="res://nodes/main_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://assets/icon.svg"
 
+[audio]
+
+driver/enable_input=true
+
 [display]
 
 window/size/viewport_width=800

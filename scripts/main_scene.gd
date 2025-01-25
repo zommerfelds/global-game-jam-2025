@@ -47,6 +47,7 @@ func _on_bubble_fired(player_id: int, duration: float):
 	bubble.player_id = player_id
 	bubble.color = player_colors[player_id-1]
 	bubble.duration = (duration ** 0.3) * 0.7
+	$AudioInput.blow.connect(bubble.on_blow)
 	add_child(bubble)
 	$Blub.play()
 

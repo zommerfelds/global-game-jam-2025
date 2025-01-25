@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=21 format=4 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://brx86mi3cxe2t" path="res://assets/Line-And-Shape-16x16-Expanded-Gothic.png" id="10_8wdku"]
 [ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
+[ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
 
 [sub_resource type="Gradient" id="Gradient_hav4s"]
 colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
@@ -922,6 +923,8 @@ sources/0 = SubResource("TileSetAtlasSource_yjmvj")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
 
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_46w4w"]
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
 
@@ -1017,3 +1020,11 @@ parameters/looping = true
 
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")
+
+[node name="AudioInput" type="Node2D" parent="."]
+script = ExtResource("14_nlb2v")
+
+[node name="MicPlayer" type="AudioStreamPlayer" parent="AudioInput"]
+stream = SubResource("AudioStreamMicrophone_46w4w")
+autoplay = true
+bus = &"Microphone"
