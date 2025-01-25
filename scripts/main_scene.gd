@@ -13,6 +13,8 @@ const player_colors = [Color.HOT_PINK, Color.BLUE]
 var player_id = 1
 var player_1_score = 0
 var player_2_score = 0
+var soundtrack_id = 0
+const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,3 +69,7 @@ func _update_score_labels():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_background_music"):
 		$Soundtrack.playing = not $Soundtrack.playing
+	if Input.is_action_just_pressed("next_background_music"):
+		soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
+		$Soundtrack.stream = SOUNDTRACKS[soundtrack_id]
+		$Soundtrack.play()
