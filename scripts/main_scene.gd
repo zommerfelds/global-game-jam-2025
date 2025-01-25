@@ -32,6 +32,7 @@ func _on_bubble_fired(player_id):
 	bubble.velocity = direction * 300 # Adjust speed as needed
 	bubble.bubble_burst.connect(_on_bubble_burst)
 	bubble.player_id = player_id
+	bubble.color = player_colors[player_id-1]
 	add_child(bubble)
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):

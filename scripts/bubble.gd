@@ -5,6 +5,7 @@ signal bubble_burst()
 var velocity = Vector2.ZERO
 var player_id: int
 var splash_radius: float = 50
+var color: Color
 
 
 func _ready() -> void:
