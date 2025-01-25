@@ -14,6 +14,8 @@ shader_parameter/seed = 0.0
 shader_parameter/color_tint = null
 
 [node name="RigidBody2D" type="RigidBody2D"]
+can_sleep = false
+continuous_cd = 1
 script = ExtResource("1_4k1xa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
