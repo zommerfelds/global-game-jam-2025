@@ -3,8 +3,8 @@ extends Node2D
 @onready var canvas = $Canvas
 @onready var player_1_cannon = $Player1Cannon
 @onready var player_2_cannon = $Player2Cannon
-@onready var score_p1 = $ScoreBar/P1Score
-@onready var score_p2 = $ScoreBar/P2Score
+@onready var score_p1 = $ScoreBar/Bar/P1Score
+@onready var score_p2 = $ScoreBar/Bar/P2Score
 
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")

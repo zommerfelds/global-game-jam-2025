@@ -17,13 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://b2wo7uk4b21ju" path="res://nodes/star.tscn" id="15_gp10i"]
 [ext_resource type="AudioStream" uid="uid://b3xxtj81ptq5l" path="res://assets/chaching.mp3" id="16_h3tkv"]
 
-[sub_resource type="Gradient" id="Gradient_hav4s"]
-colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_u7k1u"]
-gradient = SubResource("Gradient_hav4s")
-width = 1
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjmvj"]
 texture = ExtResource("10_8wdku")
 0:0/0 = 0
@@ -923,6 +916,13 @@ texture = ExtResource("10_8wdku")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yjmvj")
 
+[sub_resource type="Gradient" id="Gradient_hav4s"]
+colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u7k1u"]
+gradient = SubResource("Gradient_hav4s")
+width = 1
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_46w4w"]
@@ -983,34 +983,37 @@ max_polyphony = 5
 [node name="Hallelujah" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vlgua")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(400, 50)
-scale = Vector2(710, 40)
-texture = SubResource("GradientTexture1D_u7k1u")
-
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(3.8147e-06, 3.8147e-06)
 tile_map_data = PackedByteArray("AAAZAAsAAAAFAAQAAAAYAAsAAAAFAAQAAAAGABMAAAAFAAUAAAAFABMAAAAFAAUAAAAEABMAAAAFAAUAAAADABMAAAAFAAUAAAACABMAAAAFAAUAAAABABMAAAAFAAUAAAAAABMAAAAFAAUAAAArABMAAAAFAAUAAAAvABMAAAAFAAUAAAAwABMAAAAFAAUAAAAxABMAAAAFAAUAAAAuABMAAAAFAAUAAAAtABMAAAAFAAUAAAAsABMAAAAFAAUAAAATAAsAAAAFAAQAAAAUAAsAAAAFAAQAAAAVAAsAAAAFAAQAAAAWAAsAAAAFAAQAAAAXAAsAAAAFAAQAAAAaAAsAAAAFAAQAAAAbAAsAAAAFAAQAAAAcAAsAAAAFAAQAAAAdAAsAAAAFAAQAAAAeAAsAAAAFAAQAAAATAAkAAAAFAAQAAAATAAoAAAAFAAQAAAAeAAkAAAAFAAQAAAAeAAoAAAAFAAQAAAATAAwAAAAFAAQAAAATAA0AAAAFAAQAAAATAA4AAAAFAAQAAAAeAAwAAAAFAAQAAAAeAA0AAAAFAAQAAAAeAA4AAAAFAAQAAAArABIAAAAFAAUAAAArABEAAAAFAAUAAAAGABEAAAAFAAUAAAAGABIAAAAFAAUAAAArABAAAAAFAAUAAAAGABAAAAAFAAUAAAA=")
 tile_set = SubResource("TileSet_iof8k")
 
 [node name="ScoreBar" type="Sprite2D" parent="."]
-position = Vector2(50, 50)
-scale = Vector2(700, 30)
+position = Vector2(400, 50)
+scale = Vector2(710, 40)
+texture = SubResource("GradientTexture1D_u7k1u")
+
+[node name="Bar" type="Sprite2D" parent="ScoreBar"]
+z_index = 1
+position = Vector2(-0.492958, 0)
+scale = Vector2(0.985916, 0.75)
 texture = SubResource("CanvasTexture_bsy01")
 offset = Vector2(0.5, 0)
 
-[node name="P1Score" type="Sprite2D" parent="ScoreBar"]
+[node name="P1Score" type="Sprite2D" parent="ScoreBar/Bar"]
+z_index = 2
 scale = Vector2(1e-05, 1)
 centered = false
 offset = Vector2(0, -0.5)
 
-[node name="P2Score" type="Sprite2D" parent="ScoreBar"]
+[node name="P2Score" type="Sprite2D" parent="ScoreBar/Bar"]
+z_index = 2
 position = Vector2(1, 0)
 scale = Vector2(1e-05, 1)
 centered = false
 offset = Vector2(-1, -0.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="ScoreBar"]
+[node name="Separator" type="Sprite2D" parent="ScoreBar/Bar"]
 position = Vector2(0.5, 0)
 scale = Vector2(0.002, 1)
 texture = SubResource("GradientTexture1D_u7k1u")
