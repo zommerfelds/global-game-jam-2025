@@ -1,8 +1,8 @@
 extends Sprite2D
 
 var border_size = 10
-var area_width = 500
-var area_height = 300
+var area_width = 710
+var area_height = 280
 var splash_size = 20
 var background_color = Color.LAVENDER
 var player_colors = [Color.HOT_PINK, Color.BLUE]
