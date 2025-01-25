@@ -7,8 +7,7 @@ var splash_size = 20
 var background_color = Color.LAVENDER
 var player_colors = [Color.HOT_PINK, Color.BLUE]
 var image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
-var preloaded_splash_values = Dictionary()
-var splash_image = Image.new()
+var splash_images = Array()
 
 @onready var area = (area_width - 2 * border_size) * (area_height - 2 * border_size)
 
@@ -24,7 +23,10 @@ func _ready() -> void:
 	# 	Color.LAVENDER
 	#)
 	texture = ImageTexture.create_from_image(image)
-	splash_image.load("res://assets/splashes/splash_01_x64.png")
+	splash_images = [
+		Image.load_from_file("res://assets/splashes/splash_01_x64.png"),
+		Image.load_from_file("res://assets/splashes/splash_02_x64.png")
+	]
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,6 +39,7 @@ func splash(position: Vector2, color: Color, radius: float) -> int:
 
 func paint_splash(position: Vector2, color: Color) -> int:
 	var num_pixels_painted = 0
+	var splash_image = splash_images.pick_random()
 	var splash_width = splash_image.get_width()
 	var splash_height = splash_image.get_height()
 	var offset = Vector2i(
