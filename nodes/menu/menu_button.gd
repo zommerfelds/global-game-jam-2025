@@ -3,14 +3,20 @@ extends Button
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	mouse_entered.connect(_mouse_entered)
+	mouse_entered.connect(_focus_button)
+	focus_entered.connect(_focus_button)
+	
+	# If this is the first button, set the focus.
+	if get_parent().get_child(0) == self:
+		_focus_button()
 
 
 func _process(_delta: float) -> void:
 	pass
 
 
-func _mouse_entered():
+func _focus_button():
+	grab_focus()
 	$"../../Cannon".global_position.y = global_position.y
 
 
