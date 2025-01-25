@@ -49,8 +49,10 @@ func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):
 	_update_score_labels()
 
 func _update_score_labels():
-	player_1_score_label.text = "Player 1\n" + str(player_1_score)
-	player_2_score_label.text = "Player 2\n" + str(player_2_score)
+	var p1_percentage = player_1_score * 100.0 / canvas.area
+	var p2_percentage = player_2_score * 100.0 / canvas.area
+	player_1_score_label.text = "Player 1\n%.1f %%" % p1_percentage
+	player_2_score_label.text = "Player 2\n%.1f %%" % p2_percentage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

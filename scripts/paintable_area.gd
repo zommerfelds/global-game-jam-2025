@@ -9,6 +9,8 @@ var player_colors = [Color.HOT_PINK, Color.BLUE]
 var image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
 var preloaded_splash_values = Dictionary()
 
+@onready var area = (area_width - 2 * border_size) * (area_height - 2 * border_size)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	image.fill(Color.DARK_SLATE_BLUE)
