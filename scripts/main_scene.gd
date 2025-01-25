@@ -3,8 +3,8 @@ extends Node2D
 @onready var canvas = $Canvas
 @onready var player_1_cannon = $Player1Cannon
 @onready var player_2_cannon = $Player2Cannon
-@onready var player_1_score_label = $Player1Score
-@onready var player_2_score_label = $Player2Score
+@onready var score_p1 = $ScoreBar/P1Score
+@onready var score_p2 = $ScoreBar/P2Score
 
 var bubble_scene = load("res://nodes/bubble.tscn")
 
@@ -16,6 +16,14 @@ var player_2_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
+	p1_image.fill(player_colors[0])
+	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
+	p2_image.fill(player_colors[1])
+	score_p1.texture = ImageTexture.create_from_image(p1_image)
+	score_p2.texture = ImageTexture.create_from_image(p2_image)
+	score_p1.scale.x = 0
+	score_p2.scale.x = 0
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
 
@@ -49,10 +57,10 @@ func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):
 	_update_score_labels()
 
 func _update_score_labels():
-	var p1_percentage = player_1_score * 100.0 / canvas.area
-	var p2_percentage = player_2_score * 100.0 / canvas.area
-	player_1_score_label.text = "Player 1\n%.1f %%" % p1_percentage
-	player_2_score_label.text = "Player 2\n%.1f %%" % p2_percentage
+	var p1_percentage = player_1_score * 1.0 / canvas.area
+	var p2_percentage = player_2_score * 1.0 / canvas.area
+	score_p1.scale.x = p1_percentage
+	score_p2.scale.x = p2_percentage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=12 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -8,6 +8,15 @@
 [ext_resource type="Script" path="res://scripts/paintable_area.gd" id="6_8g4gx"]
 [ext_resource type="AudioStream" uid="uid://dqc308503jcgk" path="res://assets/blub.mp3" id="7_spr3s"]
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
+
+[sub_resource type="Gradient" id="Gradient_hav4s"]
+colors = PackedColorArray(0.221302, 0.221302, 0.221302, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u7k1u"]
+gradient = SubResource("Gradient_hav4s")
+width = 1
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -44,28 +53,6 @@ max_polyphony = 5
 position = Vector2(400, 300)
 script = ExtResource("6_8g4gx")
 
-[node name="Player1Score" type="Label" parent="."]
-offset_left = 9.0
-offset_right = 142.0
-offset_bottom = 87.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Player 1
-0"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="Player2Score" type="Label" parent="."]
-offset_left = 650.0
-offset_right = 799.0
-offset_bottom = 42.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Player 2
-0"
-horizontal_alignment = 1
-uppercase = true
-
 [node name="Blub" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_spr3s")
 volume_db = 10.0
@@ -73,3 +60,25 @@ max_polyphony = 5
 
 [node name="Hallelujah" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vlgua")
+
+[node name="ScoreBar" type="Sprite2D" parent="."]
+position = Vector2(50, 50)
+scale = Vector2(700, 30)
+texture = SubResource("CanvasTexture_bsy01")
+offset = Vector2(0.5, 0)
+
+[node name="P1Score" type="Sprite2D" parent="ScoreBar"]
+scale = Vector2(1e-05, 1)
+centered = false
+offset = Vector2(0, -0.5)
+
+[node name="P2Score" type="Sprite2D" parent="ScoreBar"]
+position = Vector2(1, 0)
+scale = Vector2(1e-05, 1)
+centered = false
+offset = Vector2(-1, -0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="ScoreBar"]
+position = Vector2(0.5, 0)
+scale = Vector2(0.002, 1)
+texture = SubResource("GradientTexture1D_u7k1u")
