@@ -19,7 +19,7 @@ func _ready() -> void:
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
 
-func _on_bubble_fired(player_id):
+func _on_bubble_fired(player_id: int, duration: float):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -33,6 +33,7 @@ func _on_bubble_fired(player_id):
 	bubble.bubble_burst.connect(_on_bubble_burst)
 	bubble.player_id = player_id
 	bubble.color = player_colors[player_id-1]
+	bubble.duration = duration
 	add_child(bubble)
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):

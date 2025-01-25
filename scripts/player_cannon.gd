@@ -1,6 +1,6 @@
 class_name Player_Cannon extends Sprite2D
 
-signal bubble_fired(player_id)
+signal bubble_fired(player_id, duration)
 
 @export var player_id = 0
 
@@ -8,6 +8,7 @@ const ROTATION_SPEED = 50.0
 
 # Angle of 0 means horizontal, 90 means vertical
 var angle = 0.0
+var fire_duration = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,7 +23,12 @@ func _process(delta: float) -> void:
 		rotate_cannon(-delta * ROTATION_SPEED * mirror)
 
 	if Input.is_action_just_pressed("shoot_player_" + str(player_id)):
-		bubble_fired.emit(player_id)
+		fire_duration = 0.0
+	if Input.is_action_pressed("shoot_player_" + str(player_id)):
+		fire_duration += delta
+	if Input.is_action_just_released("shoot_player_" + str(player_id)):
+		bubble_fired.emit(player_id, fire_duration)
+
 
 func rotate_cannon(rotation_angle_change: float) -> void:
 	angle = clamp(angle + rotation_angle_change, -90, 0)
