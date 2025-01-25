@@ -6,6 +6,10 @@ var velocity = Vector2.ZERO
 var player_id: int
 var splash_radius: float = 50
 
+
+func _ready() -> void:
+	$Sprite.set_modulate(color)
+
 func _physics_process(delta):
 	position += velocity * delta
 	
