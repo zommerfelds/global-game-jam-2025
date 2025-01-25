@@ -961,6 +961,10 @@ parameters/looping = true
 stream = ExtResource("5_5et1r")
 max_polyphony = 5
 
+[node name="CanvasBackground" type="Sprite2D" parent="."]
+position = Vector2(400, 230)
+texture = ExtResource("7_2jurt")
+
 [node name="Canvas" type="Sprite2D" parent="."]
 position = Vector2(400, 230)
 texture = ExtResource("7_2jurt")
