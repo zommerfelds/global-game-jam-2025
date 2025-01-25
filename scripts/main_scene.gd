@@ -18,6 +18,7 @@ var player_2_score = 0
 func _ready() -> void:
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
+	$Soundtrack.play()
 
 func _on_bubble_fired(player_id: int, duration: float):
 	var bubble = bubble_scene.instantiate()
@@ -56,4 +57,5 @@ func _update_score_labels():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("toggle_background_music"):
+		$Soundtrack.playing = not $Soundtrack.playing
