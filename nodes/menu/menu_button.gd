@@ -21,6 +21,8 @@ func _pressed():
 	elif text == 'Level 2':
 		Global.level_scene = "res://nodes/levels/level_2.tscn"
 		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
+	elif text == 'Exit':
+		get_tree().quit()
 	else:
 		print("Button not recognized: " + text)
 	
