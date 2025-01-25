@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=7 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
 [ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="3_iqdtu"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="4_hjojy"]
 [ext_resource type="AudioStream" uid="uid://bhiq6tl3lx6lq" path="res://assets/splat.mp3" id="5_5et1r"]
+[ext_resource type="Script" path="res://scripts/paintable_area.gd" id="6_8g4gx"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -34,3 +35,7 @@ player_id = 2
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_5et1r")
+
+[node name="Canvas" type="Sprite2D" parent="."]
+position = Vector2(400, 300)
+script = ExtResource("6_8g4gx")

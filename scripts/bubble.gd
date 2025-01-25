@@ -3,6 +3,8 @@ extends Area2D
 signal bubble_burst()
 
 var velocity = Vector2.ZERO
+var color: Color
+var splash_radius: float = 50
 var burst = false
 
 func _physics_process(delta):
@@ -16,6 +18,6 @@ func _physics_process(delta):
 	if randi() % 100 == 1:
 		velocity = Vector2.ZERO
 		z_index = 0
-		$Sprite.texture = preload("res://assets/splash.png")
-		bubble_burst.emit()
+		#$Sprite.texture = preload("res://assets/splash.png")
+		bubble_burst.emit(position, color, splash_radius)
 		burst = true
