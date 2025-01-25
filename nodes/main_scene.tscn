@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://dqc308503jcgk" path="res://assets/blub.mp3" id="7_spr3s"]
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
-[ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
@@ -113,9 +112,7 @@ scale = Vector2(0.002, 1)
 texture = SubResource("GradientTexture1D_u7k1u")
 
 [node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_exomn")
 volume_db = -1.0
-parameters/looping = true
 
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")
@@ -131,3 +128,14 @@ autoplay = true
 stream = ExtResource("14_40ldf")
 volume_db = 10.0
 max_polyphony = 5
+
+[node name="CountDownTimer" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 384.0
+offset_top = 76.0
+offset_right = 448.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)

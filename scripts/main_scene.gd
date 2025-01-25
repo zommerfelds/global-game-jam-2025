@@ -5,7 +5,7 @@ extends Node2D
 @onready var player_2_cannon = $Player2Cannon
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
-
+@onready var timer_label = $CountDownTimer
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
@@ -13,7 +13,9 @@ var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), P
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
-
+var timerStart=false
+var defaultTimePerRound=60 # unit is second
+var timeLeft=defaultTimePerRound
 const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 
 # Called when the node enters the scene tree for the first time.
@@ -33,6 +35,7 @@ func _ready() -> void:
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
 	current_level = load("res://nodes/level_1.tscn").instantiate()
 	current_level.players = player
+	timerStart=true
 	add_child(current_level)
 
 func _on_bubble_fired(player_id: int, duration: float):
@@ -96,3 +99,12 @@ func _process(delta: float) -> void:
 		soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
 		$Soundtrack.stream = SOUNDTRACKS[soundtrack_id]
 		$Soundtrack.play()
+	if timerStart:
+		timeLeft=timeLeft-delta
+		timer_label.text = "%.0f" % timeLeft
+		if(timeLeft<0):
+			Global.score_p1=player[0].score * 1.0 / canvas.area
+			Global.score_p2=player[1].score * 1.0 / canvas.area
+			print("Game over! Switching scenes...")
+			get_tree().change_scene_to_file("res://nodes/GameEnd.tscn")
+			
