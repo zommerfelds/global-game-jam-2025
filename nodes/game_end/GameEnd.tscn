@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5obxa3b78vcu"]
+[gd_scene load_steps=5 format=3 uid="uid://c5obxa3b78vcu"]
 
-[ext_resource type="Script" path="res://scripts/game_end.gd" id="1_s2dfi"]
-[ext_resource type="Script" path="res://scripts/rematch_button.gd" id="2_r8s2m"]
-[ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_wwqgv"]
+[ext_resource type="Script" path="res://nodes/game_end/game_end.gd" id="1_3hxfw"]
+[ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_o7ik6"]
+[ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_oml7f"]
+[ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_g8sga"]
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3
@@ -11,12 +12,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_s2dfi")
+script = ExtResource("1_3hxfw")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(400, 225)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_wwqgv")
+texture = ExtResource("2_o7ik6")
 
 [node name="Canvas" type="Sprite2D" parent="."]
 position = Vector2(400, 210)
@@ -102,14 +103,32 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -38.5
-offset_top = -51.0
-offset_right = 38.5
-offset_bottom = -20.0
+offset_left = -174.0
+offset_top = -64.0
+offset_right = -12.0
+offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "Rematch"
-script = ExtResource("2_r8s2m")
+script = ExtResource("3_oml7f")
+
+[node name="RematchButton2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -64.0
+offset_right = 213.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("4_g8sga")
 
 [connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]
+[connection signal="pressed" from="RematchButton2" to="RematchButton2" method="_on_pressed"]
