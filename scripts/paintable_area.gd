@@ -25,7 +25,8 @@ func _ready() -> void:
 	texture = ImageTexture.create_from_image(image)
 	splash_images = [
 		Image.load_from_file("res://assets/splashes/splash_01_x64.png"),
-		Image.load_from_file("res://assets/splashes/splash_02_x64.png")
+		Image.load_from_file("res://assets/splashes/splash_02_x64.png"),
+		Image.load_from_file("res://assets/splashes/splash_03_x64.png")
 	]
 	
 
