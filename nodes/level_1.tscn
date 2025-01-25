@@ -909,7 +909,7 @@ script = ExtResource("1_mxr3x")
 [node name="Star" parent="." instance=ExtResource("1_mdgiu")]
 
 [node name="Star2" parent="." instance=ExtResource("1_mdgiu")]
-position = Vector2(138, 199)
+position = Vector2(138, 198)
 
 [node name="Star3" parent="." instance=ExtResource("1_mdgiu")]
 position = Vector2(652, 209)

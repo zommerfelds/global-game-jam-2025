@@ -38,13 +38,15 @@ func _ready() -> void:
 func _on_bubble_fired(player_id: int, duration: float):
 	if player[player_id-1].bonus_shots_remaining > 0:
 		player[player_id-1].bonus_shots_remaining -= 1
-		fire_bubble(player_id, duration, 10)
-		fire_bubble(player_id, duration, 0)
-		fire_bubble(player_id, duration, -10)
+		fire_bubble(player_id, duration, 10, 0)
+		fire_bubble(player_id, duration, 20, 0)
+		fire_bubble(player_id, duration, 0, 2)
+		fire_bubble(player_id, duration, -10, 0)
+		fire_bubble(player_id, duration, -20, 0)
 	else:
 		fire_bubble(player_id, duration)
 
-func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0):
+func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sound: int = 1):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -61,7 +63,10 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0):
 	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
 	add_child(bubble)
-	$Blub.play()
+	if sound == 1:
+		$Blub.play()
+	elif sound == 2:
+		$BigBlub.play()
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
 	$Splat.play()

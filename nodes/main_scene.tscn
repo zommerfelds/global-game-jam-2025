@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=19 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
 [ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
+[ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
 
 [sub_resource type="Gradient" id="Gradient_hav4s"]
@@ -125,3 +126,8 @@ script = ExtResource("14_nlb2v")
 [node name="MicPlayer" type="AudioStreamPlayer" parent="AudioInput"]
 stream = SubResource("AudioStreamMicrophone_46w4w")
 autoplay = true
+
+[node name="BigBlub" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_40ldf")
+volume_db = 10.0
+max_polyphony = 5
