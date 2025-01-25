@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dsy5cxeq3gskl" path="res://assets/cannon-base.png" id="1_oukha"]
 [ext_resource type="Script" path="res://scripts/player_cannon.gd" id="1_txqmi"]
-[ext_resource type="Texture2D" uid="uid://hra7gon3x7bp" path="res://assets/cannon.png" id="2_y30tk"]
+[ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="2_y30tk"]
 
 [node name="Valu" type="Node2D"]
 
