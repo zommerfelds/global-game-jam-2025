@@ -40,7 +40,7 @@ func splash(position: Vector2, color: Color, radius: float) -> int:
 
 func paint_splash(position: Vector2, color: Color) -> int:
 	var num_pixels_painted = 0
-	var splash_image = splash_images.pick_random()
+	var splash_image = splash_images[0]
 	var splash_width = splash_image.get_width()
 	var splash_height = splash_image.get_height()
 	var offset = Vector2i(
@@ -51,8 +51,7 @@ func paint_splash(position: Vector2, color: Color) -> int:
 		for y in range(splash_height):
 			var relative_position = Vector2i(x, y) + Vector2i(position) + offset
 			# Don't paint if the pixel already has a non-background color.
-			if (is_out_of_bounds(relative_position.x, relative_position.y, image) 
-					or image.get_pixel(relative_position.x, relative_position.y) != background_color):
+			if is_out_of_bounds(relative_position.x, relative_position.y, image):
 				continue
 			var offset_vector = Vector2(x, y) - splash_image.get_size()/2.0
 			var new_source_coords = offset_vector.rotated(splash_rotation) + splash_image.get_size()/2.0
@@ -61,11 +60,18 @@ func paint_splash(position: Vector2, color: Color) -> int:
 			var alpha = splash_image.get_pixel(new_source_coords.x, new_source_coords.y).a
 			if (alpha == 0):
 				continue
-			image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
-			num_pixels_painted += 1
+			var color_before = image.get_pixel(relative_position.x, relative_position.y)
+			if isColorSameIgnoringAlpha(color_before, background_color):
+				image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
+				num_pixels_painted += 1
+			elif isColorSameIgnoringAlpha(color_before, color):
+				image.set_pixel(relative_position.x, relative_position.y, Color(color, min(1, color_before.a + alpha)))
 		
 	texture = ImageTexture.create_from_image(image)
 	return num_pixels_painted
+	
+func isColorSameIgnoringAlpha(c1: Color, c2: Color) -> bool:
+	return c1.r == c2.r and c1.g == c2.g and c1.b == c2.b
 	
 func is_out_of_bounds(x: int, y: int, image: Image) -> bool:
 	return x < 0 || x >= image.get_width() || y < 0 || y >= image.get_height()
