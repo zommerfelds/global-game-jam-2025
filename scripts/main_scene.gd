@@ -33,7 +33,8 @@ func _ready() -> void:
 	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
-	current_level = load("res://nodes/level_1.tscn").instantiate()
+	print("Loading " + Global.level_scene)
+	current_level = load(Global.level_scene).instantiate()
 	current_level.players = player
 	timerStart=true
 	add_child(current_level)
@@ -108,5 +109,6 @@ func _process(delta: float) -> void:
 		if(timeLeft<0):
 			Global.score_p1=player[0].score * 1.0 / canvas.area
 			Global.score_p2=player[1].score * 1.0 / canvas.area
+			Global.canvas_texture = canvas.texture
 			print("Game over! Switching scenes...")
 			get_tree().change_scene_to_file("res://nodes/GameEnd.tscn")
