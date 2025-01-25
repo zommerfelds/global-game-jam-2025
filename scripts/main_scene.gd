@@ -104,9 +104,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_ai"):
 		$AI.enabled = not $AI.enabled
 	if timerStart:
-		timeLeft=timeLeft-delta
+		timeLeft = timeLeft - delta
 		timer_label.text = "%.0f" % timeLeft
-		if timeLeft<0 or Input.is_key_pressed(KEY_BACKSPACE): # backspace for debugging
+		if timeLeft < 0 or Input.is_key_pressed(KEY_BACKSPACE): # backspace for debugging
 			timerStart = false
 			Global.score_p1=player[0].score * 1.0 / canvas.area
 			Global.score_p2=player[1].score * 1.0 / canvas.area
