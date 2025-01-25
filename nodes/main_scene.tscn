@@ -11,14 +11,14 @@
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
 [ext_resource type="AudioStream" uid="uid://d137ratfe0ec8" path="res://assets/soundtrack.mp3" id="10_exomn"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
-
 [sub_resource type="Gradient" id="Gradient_hav4s"]
-colors = PackedColorArray(0.221302, 0.221302, 0.221302, 1, 1, 1, 1, 1)
+colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_u7k1u"]
 gradient = SubResource("Gradient_hav4s")
 width = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -70,6 +70,11 @@ max_polyphony = 5
 
 [node name="Hallelujah" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vlgua")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(400, 50)
+scale = Vector2(710, 40)
+texture = SubResource("GradientTexture1D_u7k1u")
 
 [node name="ScoreBar" type="Sprite2D" parent="."]
 position = Vector2(50, 50)
