@@ -50,7 +50,7 @@ func _on_bubble_fired(player_id: int, duration: float):
 	add_child(bubble)
 	$Blub.play()
 
-func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):
+func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
 	$Splat.play()
 	if randi() % 100 == 0:
 		$Hallelujah.play();

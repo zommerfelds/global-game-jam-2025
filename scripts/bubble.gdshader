@@ -43,4 +43,3 @@ void fragment() {
 
   COLOR.rgb = mix(COLOR.rgb, color_tint, 0.5);
 }
-

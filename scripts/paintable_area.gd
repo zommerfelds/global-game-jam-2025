@@ -8,6 +8,7 @@ var background_color = Color.LAVENDER
 var player_colors = [Color.HOT_PINK, Color.BLUE]
 var image = Image.create(area_width, area_height, false, Image.FORMAT_RGBA8)
 var preloaded_splash_values = Dictionary()
+var splash_image = Image.new()
 
 @onready var area = (area_width - 2 * border_size) * (area_height - 2 * border_size)
 
@@ -23,61 +24,41 @@ func _ready() -> void:
 	# 	Color.LAVENDER
 	#)
 	texture = ImageTexture.create_from_image(image)
-	
-	var image = Image.new()
-	image.load("res://assets/splashes/splash_01_x64.png")
-	for x in image.get_width():
-		for y in image.get_height():
-			var color = image.get_pixel(x, y)
-			# Ignore fully transparent pixels.
-			if color.a == 0:
-				continue
-				
-			var offset = Vector2(
-				x - (image.get_width() / 2),
-				y - (image.get_height() / 2))
-			preloaded_splash_values[offset] = color.a
+	splash_image.load("res://assets/splashes/splash_01_x64.png")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-
 func splash(position: Vector2, color: Color, radius: float) -> int:
 	var paint_position = position - self.position + Vector2(area_width/2, area_height/2)
-	# return paint_circle(paint_position, radius, color)
-	# TODO: Show sprite on top and fade it out.
 	return paint_splash(paint_position, color)
 
 func paint_splash(position: Vector2, color: Color) -> int:
 	var num_pixels_painted = 0
-	for offset in preloaded_splash_values.keys():
-		var relative_position = position + offset
-		if image.get_pixel(relative_position.x, relative_position.y) != background_color:
-				# Don't paint if the pixel already has a non-background color.
-			continue
-
-		var alpha = preloaded_splash_values[offset]
-		image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
-		num_pixels_painted += 1
-		
-	texture = ImageTexture.create_from_image(image)
-	return num_pixels_painted
-		
-		
-
-func paint_circle(position: Vector2, radius: float, color: Color) -> int:
-	# Draw a circle, column by column
-	var num_pixels_painted = 0
-	for x in range(-radius, radius + 1):
-		var sq = sqrt(radius**2 - x**2)
-		for y in range(-sq, sq + 1):
-			if image.get_pixel(position.x + x, position.y + y) != background_color:
-				# Don't paint if the pixel already has a non-background color.
+	var splash_width = splash_image.get_width()
+	var splash_height = splash_image.get_height()
+	var offset = Vector2i(
+		- (splash_width / 2),
+		- (splash_height / 2))
+	var splash_rotation = randf() * PI * 2
+	for x in range(splash_width):
+		for y in range(splash_height):
+			var relative_position = Vector2i(x, y) + Vector2i(position) + offset
+			var offset_vector = Vector2(x, y) - splash_image.get_size()/2.0
+			var new_source_coords = offset_vector.rotated(splash_rotation) + splash_image.get_size()/2.0
+			if (new_source_coords.x < 0 
+				|| new_source_coords.x >= splash_width
+				|| new_source_coords.y < 0 
+				|| new_source_coords.y >= splash_height):
 				continue
-			image.set_pixel(position.x + x, position.y + y, color)
+			var alpha = splash_image.get_pixel(new_source_coords.x, new_source_coords.y).a
+			if (alpha == 0):
+				continue
+			image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
 			num_pixels_painted += 1
+		
 	texture = ImageTexture.create_from_image(image)
 	return num_pixels_painted
 	
