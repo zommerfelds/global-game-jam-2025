@@ -31,7 +31,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/custom_font="res://assets/PixelifySans-VariableFont_wght.ttf"
+theme/custom_font="res://assets/Doto_Rounded-ExtraBold.ttf"
 
 [input]
 
