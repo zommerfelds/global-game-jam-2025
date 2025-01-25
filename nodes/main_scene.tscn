@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=19 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
+[ext_resource type="Script" path="res://scripts/ai.gd" id="15_flf1h"]
 
 [sub_resource type="Gradient" id="Gradient_hav4s"]
 colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
@@ -139,3 +140,6 @@ offset_right = 448.0
 offset_bottom = 99.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="AI" type="Node" parent="."]
+script = ExtResource("15_flf1h")

@@ -37,6 +37,7 @@ func _ready() -> void:
 	current_level.players = player
 	timerStart=true
 	add_child(current_level)
+	$AI.cannon = $Player2Cannon
 
 func _on_bubble_fired(player_id: int, duration: float):
 	if player[player_id-1].bonus_shots_remaining > 0:
@@ -99,6 +100,8 @@ func _process(delta: float) -> void:
 		soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
 		$Soundtrack.stream = SOUNDTRACKS[soundtrack_id]
 		$Soundtrack.play()
+	if Input.is_action_just_pressed("toggle_ai"):
+		$AI.enabled = not $AI.enabled
 	if timerStart:
 		timeLeft=timeLeft-delta
 		timer_label.text = "%.0f" % timeLeft
@@ -107,4 +110,3 @@ func _process(delta: float) -> void:
 			Global.score_p2=player[1].score * 1.0 / canvas.area
 			print("Game over! Switching scenes...")
 			get_tree().change_scene_to_file("res://nodes/GameEnd.tscn")
-			

@@ -909,10 +909,10 @@ script = ExtResource("1_mxr3x")
 [node name="Star" parent="." instance=ExtResource("1_mdgiu")]
 
 [node name="Star2" parent="." instance=ExtResource("1_mdgiu")]
-position = Vector2(138, 198)
+position = Vector2(72, 230)
 
 [node name="Star3" parent="." instance=ExtResource("1_mdgiu")]
-position = Vector2(652, 209)
+position = Vector2(730, 233)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(3.8147e-06, 3.8147e-06)
