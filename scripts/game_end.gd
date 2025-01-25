@@ -8,8 +8,10 @@ func _ready() -> void:
 	var formatedScoreP2=Global.score_p2*100
 	score_display_label.text=str("%.2f" % formatedScoreP1, "% : ", "%.2f" % formatedScoreP2, "%")
 	if(formatedScoreP1<formatedScoreP2):
+		winner_label.modulate=Color.BLUE
 		winner_label.text="Player 2 wins!"
 	else:
+		winner_label.modulate=Color.HOT_PINK
 		winner_label.text="Player 1 wins"
 	pass # Replace with function body.
 
