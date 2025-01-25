@@ -39,6 +39,8 @@ func _on_bubble_fired(player_id: int, duration: float):
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float = 50):
 	$Splat.play()
+	if randi() % 100 == 0:
+		$Hallelujah.play();
 	var score = canvas.splash(position, player_colors[player_id-1], radius)
 	if player_id == 1:
 		player_1_score += score
