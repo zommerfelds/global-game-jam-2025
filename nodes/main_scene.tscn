@@ -18,8 +18,8 @@ centered = false
 
 [node name="Player1Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(20, 521)
-scale = Vector2(-1, 1)
+position = Vector2(100, 506)
+scale = Vector2(-0.375, 0.375)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
@@ -27,7 +27,8 @@ player_id = 1
 
 [node name="Player2Cannon" type="Sprite2D" parent="."]
 z_index = 2
-position = Vector2(769, 520)
+position = Vector2(700, 506)
+scale = Vector2(0.375, 0.375)
 texture = ExtResource("3_iqdtu")
 offset = Vector2(0, 45)
 script = ExtResource("4_hjojy")
