@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5obxa3b78vcu"]
+[gd_scene load_steps=3 format=3 uid="uid://c5obxa3b78vcu"]
 
 [ext_resource type="Script" path="res://scripts/game_end.gd" id="1_s2dfi"]
+[ext_resource type="Script" path="res://scripts/rematch_button.gd" id="2_r8s2m"]
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3
@@ -79,3 +80,21 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 horizontal_alignment = 1
+
+[node name="RematchButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -51.0
+offset_right = 38.5
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Rematch"
+script = ExtResource("2_r8s2m")
+
+[connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]

@@ -14,7 +14,7 @@ var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
 var timerStart=false
-var defaultTimePerRound=30 # unit is second
+var defaultTimePerRound=10 # unit is second
 var timeLeft=defaultTimePerRound
 const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 
@@ -33,7 +33,7 @@ func _ready() -> void:
 	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
-	current_level = load("res://nodes/level_1.tscn").instantiate()
+	current_level = load("res://nodes/levels/level_1.tscn").instantiate()
 	current_level.players = player
 	timerStart=true
 	add_child(current_level)
