@@ -11,13 +11,16 @@ func _process(_delta: float) -> void:
 
 
 func _mouse_entered():
-	print("enter! " + text)
 	$"../../Cannon".global_position.y = global_position.y
 
 
 func _pressed():
 	if text == 'Level 1':
+		Global.level_scene = "res://nodes/levels/level_1.tscn"
 		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
 	elif text == 'Level 2':
-		pass
+		Global.level_scene = "res://nodes/levels/level_2.tscn"
+		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
+	else:
+		print("Button not recognized: " + text)
 	

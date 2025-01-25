@@ -33,7 +33,8 @@ func _ready() -> void:
 	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
-	current_level = load("res://nodes/levels/level_1.tscn").instantiate()
+	print("Loading " + Global.level_scene)
+	current_level = load(Global.level_scene).instantiate()
 	current_level.players = player
 	timerStart=true
 	add_child(current_level)
