@@ -13,9 +13,9 @@ var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), P
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
-var timerStart=false
-var defaultTimePerRound=10 # unit is second
-var timeLeft=defaultTimePerRound
+var timerStart = false
+var defaultTimePerRound = 60 # unit is second
+var timeLeft = defaultTimePerRound
 const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
 
 # Called when the node enters the scene tree for the first time.

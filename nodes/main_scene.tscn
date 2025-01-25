@@ -134,12 +134,13 @@ max_polyphony = 5
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 384.0
-offset_top = 76.0
-offset_right = 448.0
-offset_bottom = 99.0
+offset_left = 368.0
+offset_top = 74.0
+offset_right = 432.0
+offset_bottom = 97.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("15_flf1h")
