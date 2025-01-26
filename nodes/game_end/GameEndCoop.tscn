@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b728ng3lo4ixr"]
+[gd_scene load_steps=10 format=3 uid="uid://b728ng3lo4ixr"]
 
 [ext_resource type="Script" path="res://nodes/game_end/game_end_coop.gd" id="1_w38db"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_px5gs"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_soe10"]
 [ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_oew06"]
 [ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_4vloy"]
+[ext_resource type="Texture2D" uid="uid://g6kpsw2nikma" path="res://assets/bronze trophy.png" id="7_uwq2l"]
+[ext_resource type="Texture2D" uid="uid://c0ha60vtbqjrp" path="res://assets/silver trophy.png" id="8_12bna"]
+[ext_resource type="Texture2D" uid="uid://bnosdi01p36ls" path="res://assets/gold trophy.png" id="9_evp5p"]
 
 [node name="GameEndCoop" type="Control"]
 layout_mode = 3
@@ -18,43 +21,29 @@ script = ExtResource("1_w38db")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(400, 225)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(1.55, 1.55)
 texture = ExtResource("2_px5gs")
 
 [node name="CanvasBackground" type="Sprite2D" parent="."]
-position = Vector2(400, 210)
+position = Vector2(340, 210)
 texture = ExtResource("3_hvf45")
 
 [node name="Canvas" type="Sprite2D" parent="."]
-position = Vector2(400, 210)
-
-[node name="GameEndLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -39.5
-offset_top = 20.0
-offset_right = 39.5
-offset_bottom = 43.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Game End"
-horizontal_alignment = 1
+position = Vector2(340, 210)
 
 [node name="ScoreDisplayLabel1" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-offset_left = -60.0
-offset_top = 50.0
-offset_right = -20.0
-offset_bottom = 73.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -400.0
+offset_right = -40.0
+offset_bottom = -377.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 
@@ -65,10 +54,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -115.0
-offset_right = 30.0
-offset_bottom = -55.0
+offset_left = -90.0
+offset_top = -440.0
+offset_right = -30.0
+offset_bottom = -380.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -82,14 +71,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -82.0
-offset_right = 30.0
-offset_bottom = -22.0
+offset_left = -90.0
+offset_top = -100.0
+offset_right = -30.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 
 [node name="RematchButton" type="Button" parent="."]
@@ -99,9 +88,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -174.0
+offset_left = -234.0
 offset_top = -64.0
-offset_right = -12.0
+offset_right = -72.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -116,9 +105,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 6.0
+offset_left = -54.0
 offset_top = -64.0
-offset_right = 213.0
+offset_right = 153.0
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -127,6 +116,21 @@ text = "Main Menu"
 script = ExtResource("4_oew06")
 
 [node name="Colorizer" parent="." instance=ExtResource("5_4vloy")]
+
+[node name="TrophyBronze" type="Sprite2D" parent="."]
+position = Vector2(650, 227)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("7_uwq2l")
+
+[node name="TrophySilver" type="Sprite2D" parent="."]
+position = Vector2(650, 207)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_12bna")
+
+[node name="TrophyGold" type="Sprite2D" parent="."]
+position = Vector2(650, 210)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_evp5p")
 
 [connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]
