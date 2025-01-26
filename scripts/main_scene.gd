@@ -6,6 +6,7 @@ extends Node2D
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
 @onready var timer_label = $CountDownTimer
+var cat_mode = false
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
@@ -71,8 +72,13 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
+	if randi() % 100 == 0 or cat_mode:
+		bubble.cat_mode = true
 	add_child(bubble)
-	if sound == 1:
+	if bubble.cat_mode:
+		$Meow.pitch_scale = 1 + randf()*0.4 - 0.2
+		$Meow.play()
+	elif sound == 1:
 		$Blub.play()
 	elif sound == 2:
 		$BigBlub.play()
@@ -108,6 +114,8 @@ func _process(delta: float) -> void:
 		$Soundtrack.play()
 	if Input.is_action_just_pressed("toggle_ai"):
 		$AI.enabled = not $AI.enabled
+	if Input.is_action_just_pressed("toggle_cats"):
+		cat_mode = not cat_mode
 	if timerStart:
 		timeLeft = timeLeft - delta
 		timer_label.text = "%.0f" % timeLeft
