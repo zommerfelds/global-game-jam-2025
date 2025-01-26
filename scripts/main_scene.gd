@@ -93,7 +93,9 @@ func _on_bubble_burst(bubble: RigidBody2D):
 	if is_holy:
 		$Hallelujah.play();
 	var color = player[bubble.player_id-1].color
-	var score = canvas.splash(bubble.position, color, bubble.splash_radius, bubble.is_holy)
+	var score = canvas.splash(bubble.position, color, 
+								bubble.splash_radius, bubble.is_holy,
+								bubble.cat_mode and not cat_mode)
 	player[bubble.player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
