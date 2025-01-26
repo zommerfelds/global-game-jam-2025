@@ -90,7 +90,6 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 	bubble.player_id = player_id
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
-	$AudioInput.blow.connect(bubble.on_blow)
 	if randi() % 20 == 0 or Global.cat_mode:
 		bubble.cat_mode = true
 	bubble.is_holy = is_holy or randi() % 50 == 0

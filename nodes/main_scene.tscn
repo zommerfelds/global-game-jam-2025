@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=30 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Texture2D" uid="uid://g6kpsw2nikma" path="res://assets/bronze trophy.png" id="14_gu5y8"]
-[ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
 [ext_resource type="Script" path="res://scripts/ai.gd" id="15_flf1h"]
 [ext_resource type="Texture2D" uid="uid://b5u633q82tmn7" path="res://assets/splashes/splash_01_x64.png" id="16_7siw4"]
 [ext_resource type="Texture2D" uid="uid://bafeaegcx5ne1" path="res://assets/splashes/splash_02_x64.png" id="17_mtl4k"]
@@ -51,8 +50,6 @@ colors = PackedColorArray(1, 0.54902, 0, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_nlnaa"]
 gradient = SubResource("Gradient_qts28")
 width = 1
-
-[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_46w4w"]
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_cggda")
@@ -171,13 +168,6 @@ texture = SubResource("GradientTexture1D_nlnaa")
 
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")
-
-[node name="AudioInput" type="Node2D" parent="."]
-script = ExtResource("14_nlb2v")
-
-[node name="MicPlayer" type="AudioStreamPlayer" parent="AudioInput"]
-stream = SubResource("AudioStreamMicrophone_46w4w")
-autoplay = true
 
 [node name="BigBlub" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_40ldf")
