@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5obxa3b78vcu"]
+[gd_scene load_steps=7 format=3 uid="uid://c5obxa3b78vcu"]
 
 [ext_resource type="Script" path="res://nodes/game_end/game_end.gd" id="1_3hxfw"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_o7ik6"]
 [ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_oml7f"]
+[ext_resource type="Texture2D" uid="uid://de27mbnhrepuv" path="res://assets/canvas.png" id="3_xr5aa"]
 [ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_g8sga"]
 [ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_o6irj"]
 
@@ -19,6 +20,10 @@ script = ExtResource("1_3hxfw")
 position = Vector2(400, 225)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_o7ik6")
+
+[node name="CanvasBackground" type="Sprite2D" parent="."]
+position = Vector2(400, 210)
+texture = ExtResource("3_xr5aa")
 
 [node name="Canvas" type="Sprite2D" parent="."]
 position = Vector2(400, 210)

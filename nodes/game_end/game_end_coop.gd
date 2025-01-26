@@ -15,15 +15,18 @@ func _ready() -> void:
 	
 	if(Global.score_p1<0.5):
 		stars_label.text="Nice try."
-		hint_label.text = "Try to cover 50 % of the canvas to get a star."
+		hint_label.text = "Try to cover 50 % of the canvas to get a trophy."
 	elif(Global.score_p1<0.6):
-		stars_label.text="1 Star!"
-		hint_label.text = "Try to get 60 % for 2 stars."
+		stars_label.modulate=Color.DARK_ORANGE
+		stars_label.text="Bronze!"
+		hint_label.text = "Try to get 60 % for silver."
 	elif(Global.score_p1<0.7):
-		stars_label.text="2 Stars!"
-		hint_label.text = "Try to get 70 % for all 3 stars."
+		stars_label.modulate=Color.SILVER
+		stars_label.text="Silver!"
+		hint_label.text = "Try to get 70 % for gold."
 	else:
-		stars_label.text="3 Stars!"
+		stars_label.modulate=Color.GOLDENROD
+		stars_label.text="Gold!"
 		hint_label.text = "You are an amazing team!"
 
 # Called every frame. 'delta' is the elapsed time since the previous fram e.
