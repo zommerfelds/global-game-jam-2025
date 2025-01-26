@@ -6,7 +6,6 @@ extends Node2D
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
 @onready var timer_label = $CountDownTimer
-var cat_mode = false
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
@@ -75,7 +74,7 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
-	if randi() % 20 == 0 or cat_mode:
+	if randi() % 20 == 0 or Global.cat_mode:
 		bubble.cat_mode = true
 	bubble.is_holy = is_holy or randi() % 50 == 0
 	add_child(bubble)
@@ -89,13 +88,13 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 
 func _on_bubble_burst(bubble: RigidBody2D):
 	$Splat.play()
-	var is_holy = bubble.is_holy or (bubble.cat_mode and not cat_mode)
+	var is_holy = bubble.is_holy or (bubble.cat_mode and not Global.cat_mode)
 	if is_holy:
 		$Hallelujah.play();
 	var color = player[bubble.player_id-1].color
 	var score = canvas.splash(bubble.position, color, 
 								bubble.splash_radius, bubble.is_holy,
-								bubble.cat_mode and not cat_mode)
+								bubble.cat_mode and not Global.cat_mode)
 	player[bubble.player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
@@ -114,8 +113,6 @@ func _update_score_labels():
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_ai"):
 		Global.ai_enabled = not Global.ai_enabled
-	if Input.is_action_just_pressed("toggle_cats"):
-		cat_mode = not cat_mode
 	if timerStart:
 		timeLeft = timeLeft - delta
 		timer_label.text = "%.0f" % timeLeft
@@ -125,4 +122,7 @@ func _process(delta: float) -> void:
 			Global.score_p2=player[1].score * 1.0 / canvas.area
 			Global.canvas_texture = canvas.texture
 			print("Game over! Switching scenes...")
-			get_tree().change_scene_to_file("res://nodes/game_end/GameEnd.tscn")
+			if Global.coopMode:
+				get_tree().change_scene_to_file("res://nodes/game_end/GameEndCoop.tscn")
+			else:
+				get_tree().change_scene_to_file("res://nodes/game_end/GameEnd.tscn")

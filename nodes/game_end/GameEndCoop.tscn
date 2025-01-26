@@ -1,0 +1,127 @@
+[gd_scene load_steps=6 format=3 uid="uid://b728ng3lo4ixr"]
+
+[ext_resource type="Script" path="res://nodes/game_end/game_end_coop.gd" id="1_w38db"]
+[ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_px5gs"]
+[ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_soe10"]
+[ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_oew06"]
+[ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_4vloy"]
+
+[node name="GameEndCoop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w38db")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(400, 225)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_px5gs")
+
+[node name="Canvas" type="Sprite2D" parent="."]
+position = Vector2(400, 210)
+
+[node name="GameEndLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -39.5
+offset_top = 20.0
+offset_right = 39.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Game End"
+horizontal_alignment = 1
+
+[node name="ScoreDisplayLabel1" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -60.0
+offset_top = 50.0
+offset_right = -20.0
+offset_bottom = 73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="StarsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -110.0
+offset_right = 30.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -80.0
+offset_right = 30.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="RematchButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -174.0
+offset_top = -64.0
+offset_right = -12.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Retry"
+script = ExtResource("3_soe10")
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -64.0
+offset_right = 213.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Main Menu"
+script = ExtResource("4_oew06")
+
+[node name="Colorizer" parent="." instance=ExtResource("5_4vloy")]
+
+[connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]
