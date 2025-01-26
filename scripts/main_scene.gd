@@ -75,7 +75,7 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
-	if randi() % 50 == 0 or cat_mode:
+	if randi() % 20 == 0 or cat_mode:
 		bubble.cat_mode = true
 	bubble.is_holy = is_holy or randi() % 50 == 0
 	add_child(bubble)
@@ -93,7 +93,9 @@ func _on_bubble_burst(bubble: RigidBody2D):
 	if is_holy:
 		$Hallelujah.play();
 	var color = player[bubble.player_id-1].color
-	var score = canvas.splash(bubble.position, color, bubble.splash_radius, bubble.is_holy)
+	var score = canvas.splash(bubble.position, color, 
+								bubble.splash_radius, bubble.is_holy,
+								bubble.cat_mode and not cat_mode)
 	player[bubble.player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()

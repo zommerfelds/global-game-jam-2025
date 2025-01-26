@@ -21,11 +21,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func splash(position: Vector2, color: Color, radius: float, is_holy: bool) -> int:
+func splash(position: Vector2, color: Color, radius: float, is_holy: bool, overpaint: bool = false) -> int:
 	var paint_position = position - self.position + Vector2(area_width/2, area_height/2)
-	return paint_splash(paint_position, color, 2 if is_holy else 1)
+	return paint_splash(paint_position, color, 2 if is_holy else 1, overpaint)
 
-func paint_splash(position: Vector2, color: Color, scale: float) -> int:
+func paint_splash(position: Vector2, color: Color, scale: float, overpaint: bool = false) -> int:
 	var num_pixels_painted = 0
 	var splash_image = splash_images[0]
 	var splash_width = splash_image.get_width() * scale
@@ -48,7 +48,7 @@ func paint_splash(position: Vector2, color: Color, scale: float) -> int:
 			if (alpha == 0):
 				continue
 			var color_before = image.get_pixel(relative_position.x, relative_position.y)
-			if not (isColorSameIgnoringAlpha(color_before, player_colors[0]) or
+			if overpaint or not (isColorSameIgnoringAlpha(color_before, player_colors[0]) or
 					isColorSameIgnoringAlpha(color_before, player_colors[1])):
 				image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
 				num_pixels_painted += 1

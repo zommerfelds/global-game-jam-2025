@@ -46,8 +46,11 @@ func _pressed():
 	elif text == "Co-op mode":
 		Global.coopMode = !Global.coopMode
 	elif name == "AIEnabled":
-		# TODO: Read the "checked" property
-		Global.ai_enabled = not Global.ai_enabled
+		Global.ai_enabled = self.button_pressed
+	elif name == "MusicEnabled":
+		if self.button_pressed:
+			Global.next_soundtrack()
+		Global.soundtrack.playing = self.button_pressed
 	else:
 		print("Button not recognized: " + text)
 	

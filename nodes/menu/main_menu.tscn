@@ -72,4 +72,13 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "AI enabled (A)"
 script = ExtResource("2_0tkny")
 
+[node name="MusicEnabled" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+button_pressed = true
+text = "Music on (M)"
+script = ExtResource("2_0tkny")
+
 [node name="Colorizer" parent="." instance=ExtResource("4_lwafq")]

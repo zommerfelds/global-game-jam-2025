@@ -30,6 +30,10 @@ func _input(event):
 	if Input.is_action_just_pressed("toggle_background_music"):
 		soundtrack.playing = not soundtrack.playing
 	if Input.is_action_just_pressed("next_background_music"):
-		soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
-		soundtrack.stream = SOUNDTRACKS[soundtrack_id]
+		next_soundtrack()
 		soundtrack.play()
+
+func next_soundtrack():
+	soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
+	soundtrack.stream = SOUNDTRACKS[soundtrack_id]
+	
