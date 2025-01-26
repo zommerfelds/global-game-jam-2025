@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61cemat8uod2"]
+
+[ext_resource type="Script" path="res://scripts/Colorizer.gd" id="1_7pvk1"]
+
+[node name="Colorizer" type="Node"]
+script = ExtResource("1_7pvk1")
