@@ -12,5 +12,5 @@ func _process(delta: float) -> void:
 
 
 func _on_pressed() -> void:
-	await $"../Colorizer".spawn_splashes(200)
+	await $"../Colorizer".spawn_splashes(100)
 	get_tree().change_scene_to_file("res://nodes/menu/main_menu.tscn")
