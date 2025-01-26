@@ -36,7 +36,6 @@ func _pressed():
 		await $"../../Colorizer".spawn_splashes(100)
 		get_tree().quit()
 	elif text == "Co-op mode":
-		print(button_pressed)
 		Global.coopMode = !Global.coopMode
 	else:
 		print("Button not recognized: " + text)

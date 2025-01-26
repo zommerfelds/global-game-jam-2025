@@ -51,17 +51,22 @@ func _ready() -> void:
 	$AI.cannon = $Player2Cannon
 
 func _on_bubble_fired(player_id: int, duration: float):
+	var is_holy = player[player_id-1].holy_shots_remaining > 0
+	player[player_id-1].holy_shots_remaining = max(
+		player[player_id-1].holy_shots_remaining - 1, 
+		0)
+	
 	if player[player_id-1].bonus_shots_remaining > 0:
 		player[player_id-1].bonus_shots_remaining -= 1
-		fire_bubble(player_id, duration, 10, 0)
-		fire_bubble(player_id, duration, 20, 0)
-		fire_bubble(player_id, duration, 0, 2)
-		fire_bubble(player_id, duration, -10, 0)
-		fire_bubble(player_id, duration, -20, 0)
+		fire_bubble(player_id, duration, is_holy, 10, 0)
+		fire_bubble(player_id, duration, is_holy, 20, 0)
+		fire_bubble(player_id, duration, is_holy, 0, 2)
+		fire_bubble(player_id, duration, is_holy, -10, 0)
+		fire_bubble(player_id, duration, is_holy, -20, 0)
 	else:
-		fire_bubble(player_id, duration)
+		fire_bubble(player_id, duration, is_holy)
 
-func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sound: int = 1):
+func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angle_deg: float = 0.0, sound: int = 1):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -79,7 +84,7 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	$AudioInput.blow.connect(bubble.on_blow)
 	if randi() % 50 == 0 or cat_mode:
 		bubble.cat_mode = true
-	bubble.is_holy = randi() % 50 == 0
+	bubble.is_holy = is_holy or randi() % 50 == 0
 	add_child(bubble)
 	if bubble.cat_mode:
 		$Meow.pitch_scale = 1 + randf()*0.4 - 0.2
@@ -91,7 +96,8 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 
 func _on_bubble_burst(bubble: RigidBody2D):
 	$Splat.play()
-	if bubble.is_holy or (bubble.cat_mode and not cat_mode):
+	var is_holy = bubble.is_holy or (bubble.cat_mode and not cat_mode)
+	if is_holy:
 		$Hallelujah.play();
 	var color = player[bubble.player_id-1].color
 	var score = canvas.splash(bubble.position, color, bubble.splash_radius, bubble.is_holy)
