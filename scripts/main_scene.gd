@@ -15,16 +15,10 @@ var player: Array[PlayerState] = [
 	PlayerState.new().set_color(Color.BLUE)
 ]
 var player_id = 1
-var soundtrack_id = 0
 var current_level: Node2D
 var timerStart = false
 var defaultTimePerRound = 60 # unit is second
 var timeLeft = defaultTimePerRound
-const SOUNDTRACKS = [
-	preload("res://assets/soundtrack_0.mp3"),
-	preload("res://assets/soundtrack_1.mp3"),
-	preload("res://assets/soundtrack_2.mp3"),
-]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,7 +34,6 @@ func _ready() -> void:
 	score_p2.scale.x = 0
 	player_1_cannon.bubble_fired.connect(_on_bubble_fired)
 	player_2_cannon.bubble_fired.connect(_on_bubble_fired)
-	$Soundtrack.play()
 	$Stand.position.x = get_viewport().size.x / 2
 	$Stand.position.y = $Canvas.position.y + $Canvas.area_height / 2 + $Stand.texture.get_size().y/2
 	print("Loading " + Global.level_scene)
@@ -117,12 +110,6 @@ func _update_score_labels():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_background_music"):
-		$Soundtrack.playing = not $Soundtrack.playing
-	if Input.is_action_just_pressed("next_background_music"):
-		soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
-		$Soundtrack.stream = SOUNDTRACKS[soundtrack_id]
-		$Soundtrack.play()
 	if Input.is_action_just_pressed("toggle_ai"):
 		$AI.enabled = not $AI.enabled
 	if Input.is_action_just_pressed("toggle_cats"):
