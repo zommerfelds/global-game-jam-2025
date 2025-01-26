@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=20 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://de27mbnhrepuv" path="res://assets/canvas.png" id="7_2jurt"]
 [ext_resource type="AudioStream" uid="uid://dqc308503jcgk" path="res://assets/blub.mp3" id="7_spr3s"]
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
+[ext_resource type="AudioStream" uid="uid://cvxl4a5bb13ye" path="res://assets/meow.mp3" id="9_pg0vm"]
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
@@ -73,6 +74,10 @@ texture = ExtResource("7_2jurt")
 position = Vector2(400, 230)
 texture = ExtResource("7_2jurt")
 script = ExtResource("6_8g4gx")
+
+[node name="Meow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_pg0vm")
+max_polyphony = 5
 
 [node name="Blub" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_spr3s")

@@ -6,10 +6,14 @@ extends Node2D
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
 @onready var timer_label = $CountDownTimer
+var cat_mode = false
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
-var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
+var player: Array[PlayerState] = [
+	PlayerState.new().set_color(Color.HOT_PINK),
+	PlayerState.new().set_color(Color.BLUE)
+]
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
@@ -24,6 +28,8 @@ const SOUNDTRACKS = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.coopMode:
+		player[1] = player[0]
 	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
 	p1_image.fill(player[0].color)
 	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
@@ -77,24 +83,30 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 	bubble.duration = (power ** 0.3) * 0.7
 	bubble.is_holy = is_holy
 	$AudioInput.blow.connect(bubble.on_blow)
+	if randi() % 50 == 0 or cat_mode:
+		bubble.cat_mode = true
+	bubble.is_holy = randi() % 50 == 0
 	add_child(bubble)
-	if sound == 1:
+	if bubble.cat_mode:
+		$Meow.pitch_scale = 1 + randf()*0.4 - 0.2
+		$Meow.play()
+	elif sound == 1:
 		$Blub.play()
 	elif sound == 2:
 		$BigBlub.play()
 
-func _on_bubble_burst(position: Vector2, player_id: int, radius: float, is_holy_override: bool):
+func _on_bubble_burst(bubble: RigidBody2D):
 	$Splat.play()
-	var is_holy = randi() % 50 == 0 or is_holy_override
+	var is_holy = bubble.is_holy or (bubble.cat_mode and not cat_mode)
 	if is_holy:
 		$Hallelujah.play();
-	var color = player[player_id-1].color
-	var score = canvas.splash(position, color, radius, is_holy)
-	player[player_id-1].score += score
+	var color = player[bubble.player_id-1].color
+	var score = canvas.splash(bubble.position, color, bubble.splash_radius, bubble.is_holy)
+	player[bubble.player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
 	splash.color = color
-	splash.position = position;
+	splash.position = bubble.position
 	add_child(splash)
 	_update_score_labels()
 
@@ -114,6 +126,8 @@ func _process(delta: float) -> void:
 		$Soundtrack.play()
 	if Input.is_action_just_pressed("toggle_ai"):
 		$AI.enabled = not $AI.enabled
+	if Input.is_action_just_pressed("toggle_cats"):
+		cat_mode = not cat_mode
 	if timerStart:
 		timeLeft = timeLeft - delta
 		timer_label.text = "%.0f" % timeLeft
