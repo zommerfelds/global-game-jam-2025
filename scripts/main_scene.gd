@@ -10,7 +10,10 @@ var cat_mode = false
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
-var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
+var player: Array[PlayerState] = [
+	PlayerState.new().set_color(Color.HOT_PINK),
+	PlayerState.new().set_color(Color.BLUE)
+]
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
@@ -25,6 +28,8 @@ const SOUNDTRACKS = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.coopMode:
+		player[1] = player[0]
 	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
 	p1_image.fill(player[0].color)
 	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
@@ -46,17 +51,22 @@ func _ready() -> void:
 	$AI.cannon = $Player2Cannon
 
 func _on_bubble_fired(player_id: int, duration: float):
+	var is_holy = player[player_id-1].holy_shots_remaining > 0
+	player[player_id-1].holy_shots_remaining = max(
+		player[player_id-1].holy_shots_remaining - 1, 
+		0)
+	
 	if player[player_id-1].bonus_shots_remaining > 0:
 		player[player_id-1].bonus_shots_remaining -= 1
-		fire_bubble(player_id, duration, 10, 0)
-		fire_bubble(player_id, duration, 20, 0)
-		fire_bubble(player_id, duration, 0, 2)
-		fire_bubble(player_id, duration, -10, 0)
-		fire_bubble(player_id, duration, -20, 0)
+		fire_bubble(player_id, duration, is_holy, 10, 0)
+		fire_bubble(player_id, duration, is_holy, 20, 0)
+		fire_bubble(player_id, duration, is_holy, 0, 2)
+		fire_bubble(player_id, duration, is_holy, -10, 0)
+		fire_bubble(player_id, duration, is_holy, -20, 0)
 	else:
-		fire_bubble(player_id, duration)
+		fire_bubble(player_id, duration, is_holy)
 
-func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sound: int = 1):
+func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angle_deg: float = 0.0, sound: int = 1):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -72,8 +82,9 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
 	$AudioInput.blow.connect(bubble.on_blow)
-	if randi() % 100 == 0 or cat_mode:
+	if randi() % 50 == 0 or cat_mode:
 		bubble.cat_mode = true
+	bubble.is_holy = is_holy or randi() % 50 == 0
 	add_child(bubble)
 	if bubble.cat_mode:
 		$Meow.pitch_scale = 1 + randf()*0.4 - 0.2
@@ -83,18 +94,18 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	elif sound == 2:
 		$BigBlub.play()
 
-func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
+func _on_bubble_burst(bubble: RigidBody2D):
 	$Splat.play()
-	var is_holy = randi() % 50 == 0
+	var is_holy = bubble.is_holy or (bubble.cat_mode and not cat_mode)
 	if is_holy:
 		$Hallelujah.play();
-	var color = player[player_id-1].color
-	var score = canvas.splash(position, color, radius, is_holy)
-	player[player_id-1].score += score
+	var color = player[bubble.player_id-1].color
+	var score = canvas.splash(bubble.position, color, bubble.splash_radius, bubble.is_holy)
+	player[bubble.player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
 	splash.color = color
-	splash.position = position;
+	splash.position = bubble.position
 	add_child(splash)
 	_update_score_labels()
 
