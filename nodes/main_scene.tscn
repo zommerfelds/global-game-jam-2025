@@ -117,9 +117,6 @@ position = Vector2(0.5, 0)
 scale = Vector2(0.002, 1)
 texture = SubResource("GradientTexture1D_u7k1u")
 
-[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-volume_db = -1.0
-
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")
 

@@ -41,6 +41,9 @@ func _pressed():
 		get_tree().quit()
 	elif text == "Co-op mode":
 		Global.coopMode = !Global.coopMode
+	elif name == "AIEnabled":
+		# TODO: Read the "checked" property
+		Global.ai_enabled = not Global.ai_enabled
 	else:
 		print("Button not recognized: " + text)
 	
