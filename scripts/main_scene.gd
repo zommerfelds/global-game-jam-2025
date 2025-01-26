@@ -45,17 +45,22 @@ func _ready() -> void:
 	$AI.cannon = $Player2Cannon
 
 func _on_bubble_fired(player_id: int, duration: float):
+	var is_holy = player[player_id-1].holy_shots_remaining > 0
+	player[player_id-1].holy_shots_remaining = max(
+		player[player_id-1].holy_shots_remaining - 1, 
+		0)
+	
 	if player[player_id-1].bonus_shots_remaining > 0:
 		player[player_id-1].bonus_shots_remaining -= 1
-		fire_bubble(player_id, duration, 10, 0)
-		fire_bubble(player_id, duration, 20, 0)
-		fire_bubble(player_id, duration, 0, 2)
-		fire_bubble(player_id, duration, -10, 0)
-		fire_bubble(player_id, duration, -20, 0)
+		fire_bubble(player_id, duration, is_holy, 10, 0)
+		fire_bubble(player_id, duration, is_holy, 20, 0)
+		fire_bubble(player_id, duration, is_holy, 0, 2)
+		fire_bubble(player_id, duration, is_holy, -10, 0)
+		fire_bubble(player_id, duration, is_holy, -20, 0)
 	else:
-		fire_bubble(player_id, duration)
+		fire_bubble(player_id, duration, is_holy)
 
-func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sound: int = 1):
+func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angle_deg: float = 0.0, sound: int = 1):
 	var bubble = bubble_scene.instantiate()
 	var direction
 	var color
@@ -70,6 +75,7 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	bubble.player_id = player_id
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
+	bubble.is_holy = is_holy
 	$AudioInput.blow.connect(bubble.on_blow)
 	add_child(bubble)
 	if sound == 1:
@@ -77,9 +83,9 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 	elif sound == 2:
 		$BigBlub.play()
 
-func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
+func _on_bubble_burst(position: Vector2, player_id: int, radius: float, is_holy_override: bool):
 	$Splat.play()
-	var is_holy = randi() % 50 == 0
+	var is_holy = randi() % 50 == 0 or is_holy_override
 	if is_holy:
 		$Hallelujah.play();
 	var color = player[player_id-1].color

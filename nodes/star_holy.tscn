@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlt2pwygdgkq5"]
+
+[ext_resource type="Script" path="res://scripts/star.gd" id="1_en0dg"]
+[ext_resource type="Texture2D" uid="uid://ct4kvvvunmejk" path="res://assets/star-holy.png" id="2_6x06r"]
+[ext_resource type="AudioStream" uid="uid://b3xxtj81ptq5l" path="res://assets/chaching.mp3" id="3_6h2ji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qbpv"]
+size = Vector2(49, 49)
+
+[node name="Star" type="Area2D"]
+position = Vector2(401, 223)
+script = ExtResource("1_en0dg")
+is_holy = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6x06r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.38834, 0.404459)
+shape = SubResource("RectangleShape2D_8qbpv")
+
+[node name="Chaching" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_6h2ji")
+volume_db = 10.0

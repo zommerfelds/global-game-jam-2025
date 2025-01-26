@@ -6,6 +6,7 @@ var player_id: int
 var splash_radius: float = 50
 var color: Color
 var duration: float
+var is_holy: bool
 
 var extra_force: float = 0.0
 
@@ -30,7 +31,7 @@ func _physics_process(delta):
 	duration -= delta
 
 	if duration < 0.0:
-		bubble_burst.emit(position, player_id, splash_radius)
+		bubble_burst.emit(position, player_id, splash_radius, is_holy)
 		queue_free()
 
 func on_blow(power: float):

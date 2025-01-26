@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_o7ik6"]
 [ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_oml7f"]
 [ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_g8sga"]
-[ext_resource type="PackedScene" path="res://nodes/colorizer.tscn" id="5_o6irj"]
+[ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_o6irj"]
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3

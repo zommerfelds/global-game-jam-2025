@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://dsw4xsbr1v6bo"]
+[gd_scene load_steps=7 format=4 uid="uid://dsw4xsbr1v6bo"]
 
 [ext_resource type="PackedScene" uid="uid://b2wo7uk4b21ju" path="res://nodes/star.tscn" id="1_mdgiu"]
 [ext_resource type="Script" path="res://nodes/levels/level_1.gd" id="1_mxr3x"]
 [ext_resource type="Texture2D" uid="uid://brx86mi3cxe2t" path="res://assets/Line-And-Shape-16x16-Expanded-Gothic.png" id="2_al61p"]
+[ext_resource type="PackedScene" uid="uid://dlt2pwygdgkq5" path="res://nodes/star_holy.tscn" id="4_qhses"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjmvj"]
 texture = ExtResource("2_al61p")
@@ -906,8 +907,6 @@ sources/0 = SubResource("TileSetAtlasSource_yjmvj")
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_mxr3x")
 
-[node name="Star" parent="." instance=ExtResource("1_mdgiu")]
-
 [node name="Star2" parent="." instance=ExtResource("1_mdgiu")]
 position = Vector2(138, 198)
 
@@ -919,6 +918,8 @@ position = Vector2(3.8147e-06, 3.8147e-06)
 tile_map_data = PackedByteArray("AAAZAAsAAAAFAAQAAAAYAAsAAAAFAAQAAAAGABMAAAAFAAUAAAAFABMAAAAFAAUAAAAEABMAAAAFAAUAAAADABMAAAAFAAUAAAACABMAAAAFAAUAAAABABMAAAAFAAUAAAAAABMAAAAFAAUAAAArABMAAAAFAAUAAAAvABMAAAAFAAUAAAAwABMAAAAFAAUAAAAxABMAAAAFAAUAAAAuABMAAAAFAAUAAAAtABMAAAAFAAUAAAAsABMAAAAFAAUAAAATAAsAAAAFAAQAAAAUAAsAAAAFAAQAAAAVAAsAAAAFAAQAAAAWAAsAAAAFAAQAAAAXAAsAAAAFAAQAAAAaAAsAAAAFAAQAAAAbAAsAAAAFAAQAAAAcAAsAAAAFAAQAAAAdAAsAAAAFAAQAAAAeAAsAAAAFAAQAAAATAAkAAAAFAAQAAAATAAoAAAAFAAQAAAAeAAkAAAAFAAQAAAAeAAoAAAAFAAQAAAATAAwAAAAFAAQAAAATAA0AAAAFAAQAAAATAA4AAAAFAAQAAAAeAAwAAAAFAAQAAAAeAA0AAAAFAAQAAAAeAA4AAAAFAAQAAAArABIAAAAFAAUAAAArABEAAAAFAAUAAAAGABEAAAAFAAUAAAAGABIAAAAFAAUAAAArABAAAAAFAAUAAAAGABAAAAAFAAUAAAA=")
 tile_set = SubResource("TileSet_iof8k")
 
-[connection signal="body_entered" from="Star" to="Star" method="_on_body_entered"]
+[node name="Star4" parent="." instance=ExtResource("4_qhses")]
+
 [connection signal="body_entered" from="Star2" to="Star2" method="_on_body_entered"]
 [connection signal="body_entered" from="Star3" to="Star3" method="_on_body_entered"]
+[connection signal="body_entered" from="Star4" to="Star4" method="_on_body_entered"]
