@@ -21,15 +21,15 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func splash(position: Vector2, color: Color, radius: float) -> int:
+func splash(position: Vector2, color: Color, radius: float, is_holy: bool) -> int:
 	var paint_position = position - self.position + Vector2(area_width/2, area_height/2)
-	return paint_splash(paint_position, color)
+	return paint_splash(paint_position, color, 2 if is_holy else 1)
 
-func paint_splash(position: Vector2, color: Color) -> int:
+func paint_splash(position: Vector2, color: Color, scale: float) -> int:
 	var num_pixels_painted = 0
 	var splash_image = splash_images[0]
-	var splash_width = splash_image.get_width()
-	var splash_height = splash_image.get_height()
+	var splash_width = splash_image.get_width() * scale
+	var splash_height = splash_image.get_height() * scale
 	var image = texture.get_image()
 	var offset = Vector2i(
 		- (splash_width / 2),
@@ -40,8 +40,8 @@ func paint_splash(position: Vector2, color: Color) -> int:
 			var relative_position = Vector2i(x, y) + Vector2i(position) + offset
 			if is_out_of_bounds(relative_position.x, relative_position.y, image):
 				continue
-			var offset_vector = Vector2(x, y) - splash_image.get_size()/2.0
-			var new_source_coords = offset_vector.rotated(splash_rotation) + splash_image.get_size()/2.0
+			var offset_vector = Vector2(x, y) - splash_image.get_size()*scale/2.0
+			var new_source_coords = (offset_vector.rotated(splash_rotation) + splash_image.get_size()*scale/2.0) / scale
 			if (is_out_of_bounds(new_source_coords.x, new_source_coords.y, splash_image)):
 				continue
 			var alpha = splash_image.get_pixel(new_source_coords.x, new_source_coords.y).a

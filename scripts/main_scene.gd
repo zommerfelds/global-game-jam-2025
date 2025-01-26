@@ -75,10 +75,11 @@ func fire_bubble(player_id: int, power: float, delta_angle_deg: float = 0.0, sou
 
 func _on_bubble_burst(position: Vector2, player_id: int, radius: float):
 	$Splat.play()
-	if randi() % 100 == 0:
+	var is_holy = randi() % 100 == 0
+	if is_holy:
 		$Hallelujah.play();
 	var color = player[player_id-1].color
-	var score = canvas.splash(position, color, radius)
+	var score = canvas.splash(position, color, radius, is_holy)
 	player[player_id-1].score += score
 		
 	var splash = splash_effect.instantiate()
