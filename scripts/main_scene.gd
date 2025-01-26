@@ -6,7 +6,12 @@ extends Node2D
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
 @onready var timer_label = $CountDownTimer
-@onready var seperator = $ScoreBar/Bar/Separator
+@onready var seperator65 = $ScoreBar/Bar/Separator65
+@onready var seperator80 = $ScoreBar/Bar/Separator80
+@onready var trophy_bronze = $TrophyBronze
+@onready var trophy_silver = $TrophySilver
+@onready var trophy_gold = $TrophyGold
+
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
@@ -24,6 +29,17 @@ var timeLeft = defaultTimePerRound
 func _ready() -> void:
 	if Global.coopMode:
 		player[1] = player[0]
+		seperator65.visible = true
+		seperator80.visible = true
+		trophy_bronze.visible = true
+		trophy_silver.visible = true
+		trophy_gold.visible = true
+	else:
+		seperator65.visible = false
+		seperator80.visible = false
+		trophy_bronze.visible = false
+		trophy_silver.visible = false
+		trophy_gold.visible = false
 	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
 	p1_image.fill(player[0].color)
 	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)

@@ -24,16 +24,16 @@ func _ready() -> void:
 		trophy_none.visible = true
 		stars_label.text="Nice try."
 		hint_label.text = "Try to cover 50 % of the canvas to get a trophy."
-	elif(Global.score_p1<0.6):
+	elif(Global.score_p1<0.65):
 		trophy_bronze.visible = true
 		stars_label.modulate=Color.DARK_ORANGE
 		stars_label.text="Bronze!"
-		hint_label.text = "Try to get 60 % for silver."
-	elif(Global.score_p1<0.7):
+		hint_label.text = "Try to get 65 % for silver."
+	elif(Global.score_p1<0.8):
 		trophy_silver.visible = true
 		stars_label.modulate=Color.SILVER
 		stars_label.text="Silver!"
-		hint_label.text = "Try to get 70 % for gold."
+		hint_label.text = "Try to get 80 % for gold."
 	else:
 		trophy_gold.visible = true
 		stars_label.modulate=Color.GOLDENROD

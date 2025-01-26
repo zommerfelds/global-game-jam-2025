@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=29 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -11,8 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
 [ext_resource type="AudioStream" uid="uid://cvxl4a5bb13ye" path="res://assets/meow.mp3" id="9_pg0vm"]
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
+[ext_resource type="Texture2D" uid="uid://bnosdi01p36ls" path="res://assets/gold trophy.png" id="12_r7x1m"]
+[ext_resource type="Texture2D" uid="uid://c0ha60vtbqjrp" path="res://assets/silver trophy.png" id="13_0jja7"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
+[ext_resource type="Texture2D" uid="uid://g6kpsw2nikma" path="res://assets/bronze trophy.png" id="14_gu5y8"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
 [ext_resource type="Script" path="res://scripts/ai.gd" id="15_flf1h"]
 
@@ -24,6 +27,27 @@ gradient = SubResource("Gradient_hav4s")
 width = 1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_bsy01"]
+
+[sub_resource type="Gradient" id="Gradient_nlc4u"]
+colors = PackedColorArray(0.854902, 0.647059, 0.12549, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b77nw"]
+gradient = SubResource("Gradient_nlc4u")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_e7tng"]
+colors = PackedColorArray(0.752941, 0.752941, 0.752941, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mghq2"]
+gradient = SubResource("Gradient_e7tng")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_qts28"]
+colors = PackedColorArray(1, 0.54902, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nlnaa"]
+gradient = SubResource("Gradient_qts28")
+width = 1
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_46w4w"]
 
@@ -87,6 +111,21 @@ max_polyphony = 5
 [node name="Hallelujah" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_vlgua")
 
+[node name="TrophyGold" type="Sprite2D" parent="."]
+position = Vector2(610, 15)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("12_r7x1m")
+
+[node name="TrophySilver" type="Sprite2D" parent="."]
+position = Vector2(505, 15)
+scale = Vector2(0.058, 0.058)
+texture = ExtResource("13_0jja7")
+
+[node name="TrophyBronze" type="Sprite2D" parent="."]
+position = Vector2(400, 17)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("14_gu5y8")
+
 [node name="ScoreBar" type="Sprite2D" parent="."]
 position = Vector2(400, 50)
 scale = Vector2(710, 40)
@@ -112,10 +151,20 @@ scale = Vector2(1e-05, 1)
 centered = false
 offset = Vector2(-1, -0.5)
 
-[node name="Separator" type="Sprite2D" parent="ScoreBar/Bar"]
+[node name="Separator80" type="Sprite2D" parent="ScoreBar/Bar"]
+position = Vector2(0.8, 0)
+scale = Vector2(0.003, 1)
+texture = SubResource("GradientTexture1D_b77nw")
+
+[node name="Separator65" type="Sprite2D" parent="ScoreBar/Bar"]
+position = Vector2(0.65, 0)
+scale = Vector2(0.003, 1)
+texture = SubResource("GradientTexture1D_mghq2")
+
+[node name="Separator50" type="Sprite2D" parent="ScoreBar/Bar"]
 position = Vector2(0.5, 0)
-scale = Vector2(0.002, 1)
-texture = SubResource("GradientTexture1D_u7k1u")
+scale = Vector2(0.003, 1)
+texture = SubResource("GradientTexture1D_nlnaa")
 
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")
