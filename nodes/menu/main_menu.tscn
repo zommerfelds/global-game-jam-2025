@@ -44,3 +44,11 @@ script = ExtResource("2_0tkny")
 layout_mode = 2
 text = "Exit"
 script = ExtResource("2_0tkny")
+
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Co-op mode"
+script = ExtResource("2_0tkny")

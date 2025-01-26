@@ -9,6 +9,9 @@ func _ready() -> void:
 	# If this is the first button, set the focus.
 	if get_parent().get_child(0) == self:
 		_focus_button()
+		
+	if text == "Co-op mode":
+		button_pressed = Global.coopMode
 
 
 func _process(_delta: float) -> void:
@@ -29,6 +32,9 @@ func _pressed():
 		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
 	elif text == 'Exit':
 		get_tree().quit()
+	elif text == "Co-op mode":
+		print(button_pressed)
+		Global.coopMode = !Global.coopMode
 	else:
 		print("Button not recognized: " + text)
 	
