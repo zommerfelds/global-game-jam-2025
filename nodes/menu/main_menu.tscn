@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="1_ckfwb"]
 [ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="1_p6lsv"]
 [ext_resource type="Script" path="res://nodes/menu/menu_button.gd" id="2_0tkny"]
-[ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="4_lwafq"]
+[ext_resource type="PackedScene" path="res://nodes/colorizer.tscn" id="4_lwafq"]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2(4, 106)
@@ -52,6 +52,14 @@ theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Co-op mode"
+script = ExtResource("2_0tkny")
+
+[node name="AIEnabled" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "AI enabled (A)"
 script = ExtResource("2_0tkny")
 
 [node name="Colorizer" parent="." instance=ExtResource("4_lwafq")]

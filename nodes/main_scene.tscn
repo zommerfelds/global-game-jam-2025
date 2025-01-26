@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=20 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b5dypte652awa" path="res://assets/hallelujah.mp3" id="8_vlgua"]
 [ext_resource type="AudioStream" uid="uid://cvxl4a5bb13ye" path="res://assets/meow.mp3" id="9_pg0vm"]
 [ext_resource type="AudioStream" uid="uid://dxumafv3g3nb" path="res://assets/wubwub.mp3" id="9_tp06u"]
-[ext_resource type="AudioStream" uid="uid://bja7gbspd3noo" path="res://assets/soundtrack_0.mp3" id="12_kjqfg"]
 [ext_resource type="Texture2D" uid="uid://n2vxtckt1mdy" path="res://assets/stand.png" id="13_am0ri"]
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
@@ -117,11 +116,6 @@ offset = Vector2(-1, -0.5)
 position = Vector2(0.5, 0)
 scale = Vector2(0.002, 1)
 texture = SubResource("GradientTexture1D_u7k1u")
-
-[node name="Soundtrack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("12_kjqfg")
-volume_db = -1.0
-autoplay = true
 
 [node name="Stand" type="Sprite2D" parent="."]
 texture = ExtResource("13_am0ri")

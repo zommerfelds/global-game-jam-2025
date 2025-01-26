@@ -7,6 +7,7 @@ var canvas_texture: Texture2D
 var level_scene = "res://nodes/levels/level_1.tscn"
 var coopMode = false
 var soundtrack: AudioStreamPlayer
+var ai_enabled: bool = false
 
 var soundtrack_id = 0
 const SOUNDTRACKS = [

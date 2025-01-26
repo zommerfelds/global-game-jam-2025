@@ -1,7 +1,6 @@
 extends Node
 
 var cannon: Sprite2D
-var enabled: bool = false
 const AIM_TIME: float = 1.0
 
 var state = "aiming"
@@ -11,7 +10,7 @@ var target_angle_degrees: float = 45.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not cannon or not enabled:
+	if not cannon or not Global.ai_enabled:
 		return
 	if state == "aiming":
 		if cannon.rotation_degrees > target_angle_degrees + 2:
