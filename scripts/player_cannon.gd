@@ -39,10 +39,12 @@ func shoot_release():
 	# This is the initial value from the UI
 	offset = Vector2(0, 45)
 	$Wubwub.stop()
+	fire_duration = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	elapsed_time += delta
+	Input.start_joy_vibration(player_id - 1, 0, clamp(fire_duration / 2, 0, 1), 0.2)
 	var mirror = 1 if player_id == 1 else -1
 	var x_offset = mirror * (sin(elapsed_time) * 100 + 100)
 	position.x = initial_position.x + x_offset
