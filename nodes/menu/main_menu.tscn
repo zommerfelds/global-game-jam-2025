@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="1_ckfwb"]
 [ext_resource type="Texture2D" uid="uid://cocmt78nonl01" path="res://assets/cannon.png" id="1_p6lsv"]
 [ext_resource type="Script" path="res://nodes/menu/menu_button.gd" id="2_0tkny"]
-[ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="4_lwafq"]
+[ext_resource type="PackedScene" path="res://nodes/colorizer.tscn" id="4_lwafq"]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2(4, 106)
@@ -27,31 +27,31 @@ flip_h = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 279.0
-offset_top = -20.0
+offset_top = -15.0
 offset_right = 483.0
-offset_bottom = 264.0
+offset_bottom = 269.0
 
-[node name="Button1" type="Button" parent="VBoxContainer"]
+[node name="Level1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 1"
 script = ExtResource("2_0tkny")
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Level2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 2"
 script = ExtResource("2_0tkny")
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Level3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 3"
 script = ExtResource("2_0tkny")
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
+[node name="Level4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 4"
 script = ExtResource("2_0tkny")
 
-[node name="Button5" type="Button" parent="VBoxContainer"]
+[node name="LevelRandom" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level Random"
 script = ExtResource("2_0tkny")
