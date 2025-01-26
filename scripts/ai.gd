@@ -27,5 +27,5 @@ func _process(delta: float) -> void:
 		if still_to_shoot <= 0:
 			cannon.shoot_release()
 			state = "aiming"
-			target_angle_degrees = 30 + randf()*30
+			target_angle_degrees = 30 + randf()*65
 			

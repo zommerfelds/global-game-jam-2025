@@ -6,6 +6,7 @@ extends Node2D
 @onready var score_p1 = $ScoreBar/Bar/P1Score
 @onready var score_p2 = $ScoreBar/Bar/P2Score
 @onready var timer_label = $CountDownTimer
+@onready var seperator = $ScoreBar/Bar/Separator
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
@@ -104,10 +105,10 @@ func _on_bubble_burst(bubble: RigidBody2D):
 	_update_score_labels()
 
 func _update_score_labels():
-	var p1_percentage = player[0].score * 1.0 / canvas.area
+	var p1_percentage = player[0].score * 1.0 / canvas.area 
 	var p2_percentage = player[1].score * 1.0 / canvas.area
-	score_p1.scale.x = p1_percentage
-	score_p2.scale.x = p2_percentage
+	score_p1.scale.x = p1_percentage 
+	score_p2.scale.x = 0 if Global.coopMode else p2_percentage
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

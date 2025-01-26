@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ylngolvdfx2i"]
+[gd_scene load_steps=23 format=3 uid="uid://ylngolvdfx2i"]
 
 [ext_resource type="Script" path="res://scripts/main_scene.gd" id="1_cggda"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_hfgbl"]
@@ -15,6 +15,9 @@
 [ext_resource type="AudioStream" uid="uid://dbcukb314qqf1" path="res://assets/bam.mp3" id="14_40ldf"]
 [ext_resource type="Script" path="res://scripts/audio_input.gd" id="14_nlb2v"]
 [ext_resource type="Script" path="res://scripts/ai.gd" id="15_flf1h"]
+[ext_resource type="Texture2D" uid="uid://b5u633q82tmn7" path="res://assets/splashes/splash_01_x64.png" id="16_7siw4"]
+[ext_resource type="Texture2D" uid="uid://bafeaegcx5ne1" path="res://assets/splashes/splash_02_x64.png" id="17_mtl4k"]
+[ext_resource type="Texture2D" uid="uid://cj0dex5u82igf" path="res://assets/splashes/splash_03_x64.png" id="18_uj0of"]
 
 [sub_resource type="Gradient" id="Gradient_hav4s"]
 colors = PackedColorArray(0.548972, 0.328018, 0.156598, 1, 1, 1, 1, 1)
@@ -147,3 +150,15 @@ horizontal_alignment = 1
 
 [node name="AI" type="Node" parent="."]
 script = ExtResource("15_flf1h")
+
+[node name="Splash01X64" type="Sprite2D" parent="."]
+position = Vector2(879, 109)
+texture = ExtResource("16_7siw4")
+
+[node name="Splash02X64" type="Sprite2D" parent="."]
+position = Vector2(898, 223)
+texture = ExtResource("17_mtl4k")
+
+[node name="Splash03X64" type="Sprite2D" parent="."]
+position = Vector2(914, 334)
+texture = ExtResource("18_uj0of")
