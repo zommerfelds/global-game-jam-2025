@@ -125,4 +125,7 @@ func _process(delta: float) -> void:
 			Global.score_p2=player[1].score * 1.0 / canvas.area
 			Global.canvas_texture = canvas.texture
 			print("Game over! Switching scenes...")
-			get_tree().change_scene_to_file("res://nodes/game_end/GameEnd.tscn")
+			if Global.coopMode:
+				get_tree().change_scene_to_file("res://nodes/game_end/GameEndCoop.tscn")
+			else:
+				get_tree().change_scene_to_file("res://nodes/game_end/GameEnd.tscn")
