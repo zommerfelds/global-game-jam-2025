@@ -43,4 +43,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4.4.3
         with:
           branch: gh-pages
-          folder: ${{ steps.export.outputs.build_directory/Web }}
+          folder: ${{ steps.export.outputs.build_directory }}/Web
