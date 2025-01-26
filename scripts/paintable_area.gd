@@ -12,11 +12,11 @@ func _ready() -> void:
 	area_height = texture.get_size().y
 	area = area_width * area_height
 	splash_images = [
-		Image.load_from_file("res://assets/splashes/splash_01_x64.png"),
-		Image.load_from_file("res://assets/splashes/splash_02_x64.png"),
-		Image.load_from_file("res://assets/splashes/splash_03_x64.png")
+		$"../Splash01X64".texture.get_image(),
+		$"../Splash02X64".texture.get_image(),
+		$"../Splash03X64".texture.get_image()
 	]
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

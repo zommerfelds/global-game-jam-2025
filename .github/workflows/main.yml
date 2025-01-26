@@ -39,3 +39,8 @@ jobs:
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
           artifacts: ${{ steps.export.outputs.archive_directory }}/*
+      - name: Deploy to Github Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          branch: gh-pages
+          folder: ${{ steps.export.outputs.build_directory }}/Web
