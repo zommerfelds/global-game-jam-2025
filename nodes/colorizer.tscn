@@ -1,6 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://b61cemat8uod2"]
+[gd_scene load_steps=5 format=3 uid="uid://b61cemat8uod2"]
 
 [ext_resource type="Script" path="res://scripts/colorizer.gd" id="1_7pvk1"]
+[ext_resource type="Texture2D" uid="uid://b5u633q82tmn7" path="res://assets/splashes/splash_01_x64.png" id="2_xwmv5"]
+[ext_resource type="Texture2D" uid="uid://bafeaegcx5ne1" path="res://assets/splashes/splash_02_x64.png" id="3_lprmy"]
+[ext_resource type="Texture2D" uid="uid://cj0dex5u82igf" path="res://assets/splashes/splash_03_x64.png" id="4_xilh4"]
 
 [node name="Colorizer" type="Node"]
 script = ExtResource("1_7pvk1")
+
+[node name="Splash01X64" type="Sprite2D" parent="."]
+position = Vector2(956, 185)
+texture = ExtResource("2_xwmv5")
+
+[node name="Splash02X64" type="Sprite2D" parent="."]
+position = Vector2(956, 185)
+texture = ExtResource("3_lprmy")
+
+[node name="Splash03X64" type="Sprite2D" parent="."]
+position = Vector2(956, 185)
+texture = ExtResource("4_xilh4")

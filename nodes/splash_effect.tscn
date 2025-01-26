@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://17iw7t1428v3"]
+[gd_scene load_steps=8 format=3 uid="uid://cdnsplih1e6ue"]
 
 [ext_resource type="Script" path="res://scripts/splash_effect.gd" id="1_egmhc"]
 [ext_resource type="Texture2D" uid="uid://bppnq4r33kjm2" path="res://assets/splashes/splash_particle_01_x16.png" id="1_x5jtj"]

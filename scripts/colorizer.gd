@@ -1,6 +1,5 @@
 extends Node
 
-var splash_image = Image.load_from_file("res://assets/splashes/splash_01_x64.png")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 var colors = [Color.HOT_PINK, Color.BLUE]
 	
@@ -21,7 +20,7 @@ func _spawn_splash_somewhere() -> void:
 	var sprite = Sprite2D.new()
 	sprite.position = Vector2(x, y)
 	sprite.scale = Vector2.ONE * (1 + randf())
-	sprite.texture = ImageTexture.create_from_image(splash_image)
+	sprite.texture = $Splash01X64.texture
 	sprite.global_rotation = randf() * 2 * PI
 	sprite.modulate = color
 	add_child(sprite)
