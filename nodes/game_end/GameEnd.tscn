@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_o7ik6"]
 [ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_oml7f"]
 [ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_g8sga"]
-[ext_resource type="PackedScene" path="res://nodes/colorizer.tscn" id="5_o6irj"]
+[ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_o6irj"]
 
 [node name="GameEnd" type="Control"]
 layout_mode = 3
@@ -114,7 +114,7 @@ theme_override_font_sizes/font_size = 30
 text = "Rematch"
 script = ExtResource("3_oml7f")
 
-[node name="RematchButton2" type="Button" parent="."]
+[node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -134,4 +134,4 @@ script = ExtResource("4_g8sga")
 [node name="Colorizer" parent="." instance=ExtResource("5_o6irj")]
 
 [connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]
-[connection signal="pressed" from="RematchButton2" to="RematchButton2" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]

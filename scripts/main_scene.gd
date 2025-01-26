@@ -10,7 +10,10 @@ var cat_mode = false
 var bubble_scene = load("res://nodes/bubble.tscn")
 var splash_effect = load("res://nodes/splash_effect.tscn")
 
-var player: Array[PlayerState] = [PlayerState.new().set_color(Color.HOT_PINK), PlayerState.new().set_color(Color.BLUE)]
+var player: Array[PlayerState] = [
+	PlayerState.new().set_color(Color.HOT_PINK),
+	PlayerState.new().set_color(Color.BLUE)
+]
 var player_id = 1
 var soundtrack_id = 0
 var current_level: Node2D
@@ -25,6 +28,8 @@ const SOUNDTRACKS = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if Global.coopMode:
+		player[1] = player[0]
 	var p1_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)
 	p1_image.fill(player[0].color)
 	var p2_image = Image.create(1, 1, false, Image.FORMAT_RGBA8)

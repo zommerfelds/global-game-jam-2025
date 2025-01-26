@@ -48,10 +48,8 @@ func paint_splash(position: Vector2, color: Color, scale: float) -> int:
 			if (alpha == 0):
 				continue
 			var color_before = image.get_pixel(relative_position.x, relative_position.y)
-			if not (
-				isColorSameIgnoringAlpha(color_before, player_colors[0]) or
-				 isColorSameIgnoringAlpha(color_before, player_colors[1])
-				):
+			if not (isColorSameIgnoringAlpha(color_before, player_colors[0]) or
+					isColorSameIgnoringAlpha(color_before, player_colors[1])):
 				image.set_pixel(relative_position.x, relative_position.y, Color(color, alpha))
 				num_pixels_painted += 1
 			elif isColorSameIgnoringAlpha(color_before, color):
