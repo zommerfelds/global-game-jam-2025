@@ -81,11 +81,10 @@ func fire_bubble(player_id: int, power: float, is_holy: bool = false, delta_angl
 	bubble.player_id = player_id
 	bubble.color = player[player_id-1].color
 	bubble.duration = (power ** 0.3) * 0.7
-	bubble.is_holy = is_holy
 	$AudioInput.blow.connect(bubble.on_blow)
 	if randi() % 50 == 0 or cat_mode:
 		bubble.cat_mode = true
-	bubble.is_holy = randi() % 50 == 0
+	bubble.is_holy = is_holy or randi() % 50 == 0
 	add_child(bubble)
 	if bubble.cat_mode:
 		$Meow.pitch_scale = 1 + randf()*0.4 - 0.2
