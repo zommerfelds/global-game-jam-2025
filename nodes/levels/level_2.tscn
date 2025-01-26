@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://qmkenyt1gci6"]
 
 [ext_resource type="Script" path="res://nodes/levels/level_1.gd" id="1_fq21a"]
-[ext_resource type="PackedScene" uid="uid://b2wo7uk4b21ju" path="res://nodes/star.tscn" id="2_022ms"]
+[ext_resource type="PackedScene" path="res://nodes/star.tscn" id="2_022ms"]
 [ext_resource type="Texture2D" uid="uid://brx86mi3cxe2t" path="res://assets/Line-And-Shape-16x16-Expanded-Gothic.png" id="3_31jbg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yjmvj"]
