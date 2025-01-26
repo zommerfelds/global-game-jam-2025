@@ -24,26 +24,9 @@ func _focus_button():
 
 
 func _pressed():
-	if text == 'Level 1':
+	if name.begins_with("Level"):
 		await $"../../Colorizer".spawn_splashes(100)
-		Global.level_scene = "res://nodes/levels/level_1.tscn"
-		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
-	elif text == 'Level 2':
-		await $"../../Colorizer".spawn_splashes(100)
-		Global.level_scene = "res://nodes/levels/level_2.tscn"
-		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
-	elif text == 'Level 3':
-		await $"../../Colorizer".spawn_splashes(100)
-		Global.level_scene = "res://nodes/levels/level_3.tscn"
-		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
-	elif text == 'Level 4':
-		await $"../../Colorizer".spawn_splashes(100)
-		Global.level_scene = "res://nodes/levels/level_4.tscn"
-		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
-	elif text == 'Level Random':
-		await $"../../Colorizer".spawn_splashes(100)
-		Global.level_scene = "res://nodes/levels/level_random.tscn"
-		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
+		Global.start_level(name)
 	elif text == 'Exit':
 		await $"../../Colorizer".spawn_splashes(100)
 		get_tree().quit()

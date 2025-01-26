@@ -45,3 +45,15 @@ func next_soundtrack():
 func loop_soundtrack():
 	next_soundtrack()
 	soundtrack.play()
+
+const LEVELS = {
+	"Level1": "res://nodes/levels/level_1.tscn",
+	"Level2": "res://nodes/levels/level_2.tscn",
+	"Level3": "res://nodes/levels/level_3.tscn",
+	"Level4": "res://nodes/levels/level_4.tscn",
+	"LevelRandom": "res://nodes/levels/level_random.tscn"
+}
+
+func start_level(level_code: String):
+	Global.level_scene = LEVELS[level_code]
+	get_tree().change_scene_to_file("res://nodes/main_scene.tscn")

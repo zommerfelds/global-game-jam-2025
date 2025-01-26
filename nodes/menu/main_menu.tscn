@@ -31,27 +31,27 @@ offset_top = 58.8649
 offset_right = 483.0
 offset_bottom = 197.865
 
-[node name="Button1" type="Button" parent="VBoxContainer"]
+[node name="Level1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 1"
 script = ExtResource("2_0tkny")
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Level2" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 2"
 script = ExtResource("2_0tkny")
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Level3" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 3"
 script = ExtResource("2_0tkny")
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
+[node name="Level4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 4"
 script = ExtResource("2_0tkny")
 
-[node name="Button5" type="Button" parent="VBoxContainer"]
+[node name="LevelRandom" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level Random"
 script = ExtResource("2_0tkny")
