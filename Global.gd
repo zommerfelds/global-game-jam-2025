@@ -6,6 +6,7 @@ var score_p2 = 0
 var canvas_texture: Texture2D
 var level_scene = "res://nodes/levels/level_1.tscn"
 var coopMode = false
+var cat_mode = false
 var soundtrack: AudioStreamPlayer
 var ai_enabled: bool = false
 
@@ -34,6 +35,8 @@ func _input(event):
 	if Input.is_action_just_pressed("next_background_music"):
 		next_soundtrack()
 		soundtrack.play()
+	if Input.is_action_just_pressed("toggle_cats"):
+		cat_mode = not cat_mode
 
 func next_soundtrack():
 	soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
