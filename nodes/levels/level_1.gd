@@ -3,6 +3,7 @@ extends Node2D
 var players: Array[PlayerState]
 
 func _ready() -> void:
+	Global.cat_mode = name == "CatLevel"	
 	for n in get_children():
 		if "star_collected" in n:
 			n.star_collected.connect(_on_star_collected)
