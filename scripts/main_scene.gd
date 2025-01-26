@@ -58,6 +58,8 @@ func _ready() -> void:
 	timerStart=true
 	add_child(current_level)
 	$AI.cannon = $Player2Cannon
+	
+	Global.throphy_collected.connect(_on_thophy_collected)
 
 func _on_bubble_fired(player_id: int, duration: float):
 	var is_holy = player[player_id-1].holy_shots_remaining > 0
@@ -142,3 +144,7 @@ func _process(delta: float) -> void:
 				get_tree().change_scene_to_file("res://nodes/game_end/GameEndCoop.tscn")
 			else:
 				get_tree().change_scene_to_file("res://nodes/game_end/GameEnd.tscn")
+
+func _on_thophy_collected(player_id: int):
+	timeLeft = 0
+	player[player_id-1].score = canvas.area

@@ -10,6 +10,8 @@ var cat_mode = false
 var soundtrack: AudioStreamPlayer
 var ai_enabled: bool = false
 
+signal throphy_collected(player_id: int)
+
 var soundtrack_id = 0
 const SOUNDTRACKS = [
 	preload("res://assets/soundtrack_2.mp3"),
@@ -51,6 +53,7 @@ const LEVELS = {
 	"Level2": "res://nodes/levels/level_2.tscn",
 	"Level3": "res://nodes/levels/level_3.tscn",
 	"Level4": "res://nodes/levels/level_4.tscn",
+	"Level5": "res://nodes/levels/level_5.tscn",
 	"LevelRandom": "res://nodes/levels/level_random.tscn"
 }
 

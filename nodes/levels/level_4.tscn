@@ -1,26 +1,32 @@
-[gd_scene load_steps=4 format=4 uid="uid://dtlwejp2wd40f"]
+[gd_scene load_steps=6 format=4 uid="uid://mxkdo8nbljcn"]
 
 [ext_resource type="Script" path="res://nodes/levels/level_1.gd" id="1_qkobq"]
-[ext_resource type="PackedScene" uid="uid://b2wo7uk4b21ju" path="res://nodes/star.tscn" id="2_w7mar"]
-[ext_resource type="TileSet" uid="uid://kn3d3tffs1jk" path="res://nodes/levels/default_weird_tileset.tres" id="3_2lpgb"]
+[ext_resource type="TileSet" uid="uid://bspw3lgfef47x" path="res://nodes/levels/default_weird_tileset.tres" id="3_2lpgb"]
+[ext_resource type="Script" path="res://nodes/levels/win_on_enter.gd" id="3_ngppm"]
+[ext_resource type="Texture2D" uid="uid://bnosdi01p36ls" path="res://assets/gold trophy.png" id="4_i72tg"]
 
-[node name="CatLevel" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrqpb"]
+size = Vector2(84, 36)
+
+[node name="Level" type="Node2D"]
 script = ExtResource("1_qkobq")
-
-[node name="Star" parent="." instance=ExtResource("2_w7mar")]
-position = Vector2(272, 207)
-
-[node name="Star2" parent="." instance=ExtResource("2_w7mar")]
-position = Vector2(527, 201)
-
-[node name="Star3" parent="." instance=ExtResource("2_w7mar")]
-position = Vector2(404, 270)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(14, 71)
-tile_map_data = PackedByteArray("AAASAAQAAAAAAAoAAAATAAQAAAAAAAoAAAAUAAQAAAAAAAoAAAAVAAQAAAAAAAoAAAAWAAQAAAAAAAoAAAAXAAQAAAAAAAoAAAAYAAQAAAAAAAoAAAAZAAQAAAAAAAoAAAAaAAQAAAAAAAoAAAAbAAQAAAAAAAoAAAAcAAQAAAAAAAoAAAAdAAQAAAAAAAoAAAAeAAQAAAAAAAoAAAARAAMAAAAAAAoAAAAQAAIAAAAAAAoAAAAPAAEAAAAAAAoAAAAOAAAAAAAAAAoAAAAfAAMAAAAAAAoAAAAgAAIAAAAAAAoAAAAhAAEAAAAAAAoAAAAiAAAAAAAAAAoAAAANAAEAAAAAAAoAAAAMAAIAAAAAAAoAAAALAAMAAAAAAAoAAAAjAAEAAAAAAAoAAAAkAAIAAAAAAAoAAAAlAAMAAAAAAAoAAAAmAAQAAAAAAAoAAAAnAAUAAAAAAAoAAAAKAAQAAAAAAAoAAAAJAAUAAAAAAAoAAAAJAAgAAAAAAAoAAAAIAAgAAAAAAAoAAAAHAAgAAAAAAAoAAAAGAAgAAAAAAAoAAAAJAAoAAAAAAAoAAAAIAAoAAAAAAAoAAAAHAAoAAAAAAAoAAAAGAAoAAAAAAAoAAAAJAAwAAAAAAAoAAAAIAAwAAAAAAAoAAAAHAAwAAAAAAAoAAAAGAAwAAAAAAAoAAAAnAAgAAAAAAAoAAAAoAAgAAAAAAAoAAAApAAgAAAAAAAoAAAAqAAgAAAAAAAoAAAAnAAoAAAAAAAoAAAAoAAoAAAAAAAoAAAApAAoAAAAAAAoAAAAqAAoAAAAAAAoAAAAnAAwAAAAAAAoAAAAoAAwAAAAAAAoAAAApAAwAAAAAAAoAAAAqAAwAAAAAAAoAAAA=")
+tile_map_data = PackedByteArray("AAAbAAcAAAADABQAAAAbAAgAAAADABQAAAAbAAkAAAADABQAAAAbAAoAAAADABQAAAAbAAsAAAADABQAAAAbAAwAAAADABQAAAAbAA0AAAADABQAAAAbAA4AAAADABQAAAAVAA4AAAADABQAAAAWAA4AAAADABQAAAAXAA4AAAADABQAAAAYAA4AAAADABQAAAAZAA4AAAADABQAAAAaAA4AAAADABQAAAAVAAcAAAADABQAAAAVAAgAAAADABQAAAAVAAkAAAADABQAAAAVAAoAAAADABQAAAAVAAsAAAADABQAAAAVAAwAAAADABQAAAAVAA0AAAADABQAAAAXAAIAAAABABMAAAAYAAIAAAABABMAAAAZAAIAAAABABMAAAAWAAYAAAABABMAAAAaAAYAAAABABMAAAAWAAcAAAABABMAAAAaAAcAAAABABMAAAA=")
 tile_set = ExtResource("3_2lpgb")
 
-[connection signal="body_entered" from="Star" to="Star" method="_on_body_entered"]
-[connection signal="body_entered" from="Star2" to="Star2" method="_on_body_entered"]
-[connection signal="body_entered" from="Star3" to="Star3" method="_on_body_entered"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(405, 269)
+script = ExtResource("3_ngppm")
+
+[node name="GoldTrophy" type="Sprite2D" parent="Area2D"]
+position = Vector2(1, -5)
+scale = Vector2(0.148, 0.148)
+texture = ExtResource("4_i72tg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 9)
+shape = SubResource("RectangleShape2D_qrqpb")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

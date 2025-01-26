@@ -27,9 +27,9 @@ flip_h = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 offset_left = 279.0
-offset_top = -15.0
+offset_top = -33.0
 offset_right = 483.0
-offset_bottom = 269.0
+offset_bottom = 283.0
 
 [node name="Level1" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -49,6 +49,11 @@ script = ExtResource("2_0tkny")
 [node name="Level4" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Level 4"
+script = ExtResource("2_0tkny")
+
+[node name="Level5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 5"
 script = ExtResource("2_0tkny")
 
 [node name="LevelRandom" type="Button" parent="VBoxContainer"]
