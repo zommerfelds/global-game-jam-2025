@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 			cannon.rotate_up(delta)
 		else:
 			state = "shooting"
-			still_to_shoot = 0.5 + randf()
+			still_to_shoot = 0.25 + randf()
 			cannon.shoot_press()
 	elif state == "shooting":
 		still_to_shoot -= delta
