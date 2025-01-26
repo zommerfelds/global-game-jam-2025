@@ -11,15 +11,17 @@ var ai_enabled: bool = false
 
 var soundtrack_id = 0
 const SOUNDTRACKS = [
+	preload("res://assets/soundtrack_2.mp3"),
 	preload("res://assets/soundtrack_0.mp3"),
 	preload("res://assets/soundtrack_1.mp3"),
-	preload("res://assets/soundtrack_2.mp3"),
 ]
 
 func _ready() -> void:
 	print("Welcome to a bubble game!")
 	soundtrack = AudioStreamPlayer.new()
 	soundtrack.stream = SOUNDTRACKS[soundtrack_id]
+	# Is that the right way to auto-loop?
+	soundtrack.finished.connect(loop_soundtrack)
 	add_child(soundtrack)
 	soundtrack.play()
 
@@ -37,3 +39,6 @@ func next_soundtrack():
 	soundtrack_id = (soundtrack_id + 1) % len(SOUNDTRACKS)
 	soundtrack.stream = SOUNDTRACKS[soundtrack_id]
 	
+func loop_soundtrack():
+	next_soundtrack()
+	soundtrack.play()
