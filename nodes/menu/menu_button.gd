@@ -25,12 +25,15 @@ func _focus_button():
 
 func _pressed():
 	if text == 'Level 1':
+		await $"../../Colorizer".spawn_splashes(100)
 		Global.level_scene = "res://nodes/levels/level_1.tscn"
 		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
 	elif text == 'Level 2':
+		await $"../../Colorizer".spawn_splashes(100)
 		Global.level_scene = "res://nodes/levels/level_2.tscn"
 		get_tree().change_scene_to_file("res://nodes/main_scene.tscn")
 	elif text == 'Exit':
+		await $"../../Colorizer".spawn_splashes(100)
 		get_tree().quit()
 	elif text == "Co-op mode":
 		print(button_pressed)
