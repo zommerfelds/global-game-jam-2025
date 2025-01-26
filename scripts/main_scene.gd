@@ -16,7 +16,11 @@ var current_level: Node2D
 var timerStart = false
 var defaultTimePerRound = 60 # unit is second
 var timeLeft = defaultTimePerRound
-const SOUNDTRACKS = [preload("res://assets/soundtrack_0.mp3"), preload("res://assets/soundtrack_1.mp3")]
+const SOUNDTRACKS = [
+	preload("res://assets/soundtrack_0.mp3"),
+	preload("res://assets/soundtrack_1.mp3"),
+	preload("res://assets/soundtrack_2.mp3"),
+]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
