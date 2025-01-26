@@ -51,6 +51,11 @@ layout_mode = 2
 text = "Level 4"
 script = ExtResource("2_0tkny")
 
+[node name="Button5" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level Random"
+script = ExtResource("2_0tkny")
+
 [node name="ExitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Exit"

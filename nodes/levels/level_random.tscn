@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=4 uid="uid://cb15nv238v5qh"]
+
+[ext_resource type="Script" path="res://nodes/levels/level_random.gd" id="1_hbbp1"]
+[ext_resource type="PackedScene" uid="uid://b2wo7uk4b21ju" path="res://nodes/star.tscn" id="2_sw74f"]
+[ext_resource type="TileSet" uid="uid://kn3d3tffs1jk" path="res://nodes/levels/default_weird_tileset.tres" id="3_saugl"]
+
+[node name="RandomLevel" type="Node2D"]
+script = ExtResource("1_hbbp1")
+
+[node name="Star" parent="." instance=ExtResource("2_sw74f")]
+position = Vector2(272, 207)
+
+[node name="Star2" parent="." instance=ExtResource("2_sw74f")]
+position = Vector2(527, 201)
+
+[node name="Star3" parent="." instance=ExtResource("2_sw74f")]
+position = Vector2(404, 270)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+position = Vector2(14, 71)
+tile_map_data = PackedByteArray("AAASAAQAAAAAAAoAAAATAAQAAAAAAAoAAAAUAAQAAAAAAAoAAAAVAAQAAAAAAAoAAAAWAAQAAAAAAAoAAAAXAAQAAAAAAAoAAAAYAAQAAAAAAAoAAAAZAAQAAAAAAAoAAAAaAAQAAAAAAAoAAAAbAAQAAAAAAAoAAAAcAAQAAAAAAAoAAAAdAAQAAAAAAAoAAAAeAAQAAAAAAAoAAAARAAMAAAAAAAoAAAAQAAIAAAAAAAoAAAAPAAEAAAAAAAoAAAAOAAAAAAAAAAoAAAAfAAMAAAAAAAoAAAAgAAIAAAAAAAoAAAAhAAEAAAAAAAoAAAAiAAAAAAAAAAoAAAANAAEAAAAAAAoAAAAMAAIAAAAAAAoAAAALAAMAAAAAAAoAAAAjAAEAAAAAAAoAAAAkAAIAAAAAAAoAAAAlAAMAAAAAAAoAAAAmAAQAAAAAAAoAAAAnAAUAAAAAAAoAAAAKAAQAAAAAAAoAAAAJAAUAAAAAAAoAAAAJAAgAAAAAAAoAAAAIAAgAAAAAAAoAAAAHAAgAAAAAAAoAAAAGAAgAAAAAAAoAAAAJAAoAAAAAAAoAAAAIAAoAAAAAAAoAAAAHAAoAAAAAAAoAAAAGAAoAAAAAAAoAAAAJAAwAAAAAAAoAAAAIAAwAAAAAAAoAAAAHAAwAAAAAAAoAAAAGAAwAAAAAAAoAAAAnAAgAAAAAAAoAAAAoAAgAAAAAAAoAAAApAAgAAAAAAAoAAAAqAAgAAAAAAAoAAAAnAAoAAAAAAAoAAAAoAAoAAAAAAAoAAAApAAoAAAAAAAoAAAAqAAoAAAAAAAoAAAAnAAwAAAAAAAoAAAAoAAwAAAAAAAoAAAApAAwAAAAAAAoAAAAqAAwAAAAAAAoAAAA=")
+tile_set = ExtResource("3_saugl")
+
+[connection signal="body_entered" from="Star" to="Star" method="_on_body_entered"]
+[connection signal="body_entered" from="Star2" to="Star2" method="_on_body_entered"]
+[connection signal="body_entered" from="Star3" to="Star3" method="_on_body_entered"]
