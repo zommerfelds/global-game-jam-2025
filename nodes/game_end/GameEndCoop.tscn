@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b728ng3lo4ixr"]
+[gd_scene load_steps=11 format=3 uid="uid://b728ng3lo4ixr"]
 
 [ext_resource type="Script" path="res://nodes/game_end/game_end_coop.gd" id="1_w38db"]
 [ext_resource type="Texture2D" uid="uid://bho2lrr3hggme" path="res://assets/background.png" id="2_px5gs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://nodes/game_end/rematch_button.gd" id="3_soe10"]
 [ext_resource type="Script" path="res://nodes/game_end/main_menu_button.gd" id="4_oew06"]
 [ext_resource type="PackedScene" uid="uid://b61cemat8uod2" path="res://nodes/colorizer.tscn" id="5_4vloy"]
+[ext_resource type="Texture2D" uid="uid://fu2ys1r226y1" path="res://assets/losing frog.png" id="7_6u1sp"]
 [ext_resource type="Texture2D" uid="uid://g6kpsw2nikma" path="res://assets/bronze trophy.png" id="7_uwq2l"]
 [ext_resource type="Texture2D" uid="uid://c0ha60vtbqjrp" path="res://assets/silver trophy.png" id="8_12bna"]
 [ext_resource type="Texture2D" uid="uid://bnosdi01p36ls" path="res://assets/gold trophy.png" id="9_evp5p"]
@@ -30,6 +31,29 @@ texture = ExtResource("3_hvf45")
 
 [node name="Canvas" type="Sprite2D" parent="."]
 position = Vector2(340, 210)
+
+[node name="NoTrophy" type="Sprite2D" parent="."]
+position = Vector2(659, 257)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_6u1sp")
+
+[node name="TrophyBronze" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(650, 227)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("7_uwq2l")
+
+[node name="TrophySilver" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(650, 207)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("8_12bna")
+
+[node name="TrophyGold" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(650, 210)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("9_evp5p")
 
 [node name="ScoreDisplayLabel1" type="Label" parent="."]
 layout_mode = 1
@@ -116,21 +140,6 @@ text = "Main Menu"
 script = ExtResource("4_oew06")
 
 [node name="Colorizer" parent="." instance=ExtResource("5_4vloy")]
-
-[node name="TrophyBronze" type="Sprite2D" parent="."]
-position = Vector2(650, 227)
-scale = Vector2(0.65, 0.65)
-texture = ExtResource("7_uwq2l")
-
-[node name="TrophySilver" type="Sprite2D" parent="."]
-position = Vector2(650, 207)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("8_12bna")
-
-[node name="TrophyGold" type="Sprite2D" parent="."]
-position = Vector2(650, 210)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("9_evp5p")
 
 [connection signal="pressed" from="RematchButton" to="RematchButton" method="_on_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="MainMenuButton" method="_on_pressed"]

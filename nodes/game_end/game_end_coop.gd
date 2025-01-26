@@ -2,6 +2,7 @@ extends Control
 @onready var score_display_label1 = $ScoreDisplayLabel1
 @onready var stars_label = $StarsLabel
 @onready var hint_label = $HintLabel
+@onready var trophy_none = $NoTrophy
 @onready var trophy_bronze = $TrophyBronze
 @onready var trophy_silver = $TrophySilver
 @onready var trophy_gold = $TrophyGold
@@ -17,8 +18,10 @@ func _ready() -> void:
 	trophy_bronze.visible = false
 	trophy_silver.visible = false
 	trophy_gold.visible = false
+	trophy_none.visible = false
 	
-	if(Global.score_p1<0.1):
+	if(Global.score_p1<0.5):
+		trophy_none.visible = true
 		stars_label.text="Nice try."
 		hint_label.text = "Try to cover 50 % of the canvas to get a trophy."
 	elif(Global.score_p1<0.6):
